@@ -1074,6 +1074,35 @@ h3 {
     );
 }
 
+/* Short desktop viewports (the bug repro: a laptop with a lower screen / a
+   browser-zoom / a larger default font makes the content-heavy feature bands —
+   Direction most of all, with 6 paragraphs + pull-question + a 4-up grid — run
+   taller than the viewport). Paging keeps the band readable (it now settles on
+   the foot before moving on), but we can also help the whole block fit on more
+   screens by tightening the desktop vertical rhythm when height is scarce. This
+   only touches spacing, never the copy, and only kicks in below 940px tall on
+   the wide layout — normal-height desktops are untouched. */
+@media (min-width: 921px) and (max-height: 940px) {
+  .band-feature:has(.pillar-grid) {
+    padding-block: clamp(40px, 5vh, 64px);
+  }
+  .band-feature .band-inner {
+    gap: clamp(24px, 3vh, 40px);
+  }
+  .feature-head h2 + p {
+    margin-top: 22px;
+  }
+  .feature-head p + p {
+    margin-top: 14px;
+  }
+  .pillar {
+    padding-top: 24px;
+  }
+  .pillar-mark {
+    margin-bottom: 16px;
+  }
+}
+
 /* ---------- mobile background assets ----------
    The desktop assets are landscape (≈16:9) and crop badly to a vertical phone
    viewport. Each section has a portrait (941×1672) mobile asset composed for

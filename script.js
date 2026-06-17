@@ -246,6 +246,23 @@ window.addEventListener("resize", onScroll, { passive: true });
     );
   };
 
+  // smooth-scroll by a delta within the current page (used to settle on the foot
+  // or head of a band that's only modestly taller than the viewport), reusing
+  // the same lock window as pageTo so a follow-up gesture isn't read mid-scroll
+  const scrollBy = (dy) => {
+    locked = true;
+    window.scrollBy({
+      top: dy,
+      behavior: reduceMotion.matches ? "auto" : "smooth",
+    });
+    window.setTimeout(
+      () => {
+        locked = false;
+      },
+      reduceMotion.matches ? 60 : 700
+    );
+  };
+
   // returns true if the gesture was consumed (paged); false to allow native
   // scrolling inside a page that's taller than the viewport
   const handle = (dir) => {
@@ -257,25 +274,31 @@ window.addEventListener("resize", onScroll, { passive: true });
     const rect = page.getBoundingClientRect();
     const vh = window.innerHeight;
     const tallerThanView = rect.height > vh + EDGE;
-    // A band only modestly taller than the viewport would otherwise spend a
-    // whole gesture nudging its last sliver of overflow into view before the
-    // next gesture can page on — needing a spare scroll. So when the far edge
-    // is already within one gesture (≈70% viewport) of the fold, page on this
-    // gesture instead of handing it to the native scroll. Genuinely long bands
-    // (overflow beyond that) keep their native scroll for the middle content.
-    const FAR = vh * 0.7;
 
     if (dir > 0) {
-      // still content below within this page? let native scroll reveal it
-      if (tallerThanView && rect.bottom > vh + FAR) return false;
+      // Page taller than the viewport with content still below the fold: reveal
+      // it before paging on. If a full viewport-worth still remains, hand the
+      // gesture to native scrolling for the middle content; if only a sliver is
+      // left, snap straight to the band's foot so its last rows (e.g. the
+      // Direction pillar grid) are never skipped past unread. Only once the foot
+      // is reached do we page to the next band.
+      if (tallerThanView && rect.bottom > vh + EDGE) {
+        if (rect.bottom > vh * 2) return false; // long band: native scroll
+        scrollBy(rect.bottom - vh); // short overflow: settle on the foot
+        return true;
+      }
       if (i < pages.length - 1) {
         pageTo(i + 1);
         return true;
       }
       return true; // last page: nothing below, suppress overshoot
     } else {
-      // still content above within this page? let native scroll reveal it
-      if (tallerThanView && rect.top < -FAR) return false;
+      // mirror image upward: reveal content above the fold before paging back
+      if (tallerThanView && rect.top < -EDGE) {
+        if (rect.top < -vh) return false; // long band: native scroll
+        scrollBy(rect.top); // short overflow: settle on the head
+        return true;
+      }
       if (i > 0) {
         pageTo(i - 1);
         return true;
