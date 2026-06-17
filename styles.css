@@ -128,6 +128,26 @@ h3 {
   border-bottom: 1px solid transparent;
 }
 
+/* Free-scroll desktop (no paging): content can rest at any offset, so a band's
+   text may sit directly behind the header and read as an unreadable overlap.
+   Keep a permanent, gentle blur + band-tinted scrim behind the header so the
+   wordmark/nav stay legible at every scroll position. Lighter than the
+   in-transition seam treatment because it's always on, not a passing moment.
+   Declared BEFORE .in-transition so that during an actual band crossing the
+   stronger .in-transition tint wins in the cascade. JS adds .free-scroll only on
+   the desktop layout without paging; mobile (≤920px) has its own ::before blur. */
+.site-header.free-scroll {
+  background: color-mix(in srgb, var(--d-bg) 55%, transparent);
+  -webkit-backdrop-filter: blur(9px);
+  backdrop-filter: blur(9px);
+  border-bottom-color: color-mix(in srgb, var(--d-line) 70%, transparent);
+}
+
+.site-header.free-scroll.on-light {
+  background: color-mix(in srgb, var(--l-bg) 58%, transparent);
+  border-bottom-color: color-mix(in srgb, var(--l-line) 70%, transparent);
+}
+
 /* while a band boundary cuts through the header, fade in a soft blur + a
    band-tinted scrim so the wordmark/nav stay legible across the seam.
    Resting within a single band, the header stays fully transparent. */
