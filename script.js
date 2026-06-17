@@ -117,6 +117,13 @@ const bands = Array.from(document.querySelectorAll(".band"));
 const navLinks = Array.from(document.querySelectorAll(".site-nav a"));
 const navTargets = navLinks.map((a) => document.querySelector(a.getAttribute("href")));
 
+// Paging (one-band-per-gesture snap) only engages on the desktop layout AND a
+// precise pointer. These two live queries drive both the header backdrop logic
+// below and the paging block further down, so they're declared once here.
+const wideViewport = window.matchMedia("(min-width: 921px)");
+const finePointer = window.matchMedia("(pointer: fine)");
+const pagingActive = () => wideViewport.matches && finePointer.matches;
+
 let ticking = false;
 
 const bandUnder = (probeY) => {
@@ -152,6 +159,14 @@ const update = () => {
       }
     }
     header.classList.toggle("in-transition", crossing);
+
+    // On the desktop layout WITHOUT paging (free scroll — e.g. trackpad/touch
+    // not detected as a fine pointer, or paging otherwise off), content can come
+    // to rest at any offset, so a band's text can sit directly behind the header
+    // and read as an unreadable overlap. Paging never rests mid-band, so it needs
+    // no resting backdrop. Mobile (≤920px) already has its own ::before blur.
+    // Mark this state so a permanent, gentle header backdrop fades in.
+    header.classList.toggle("free-scroll", wideViewport.matches && !pagingActive());
   }
 
   // mark the nav link of the band crossing the viewport middle as current
@@ -172,6 +187,10 @@ const onScroll = () => {
 update();
 window.addEventListener("scroll", onScroll, { passive: true });
 window.addEventListener("resize", onScroll, { passive: true });
+// re-evaluate the header backdrop when paging eligibility changes (pointer type
+// switches, or the width crosses the 921px breakpoint) without a scroll/resize
+wideViewport.addEventListener("change", onScroll);
+finePointer.addEventListener("change", onScroll);
 
 /* ---------- full-page scroll (one band per scroll gesture) ----------
    A scroll gesture pages to the next/previous band so you always land exactly
@@ -184,16 +203,11 @@ window.addEventListener("resize", onScroll, { passive: true });
   let locked = false; // ignore input while a page animation is in flight
   let touchStartY = null;
 
-  // Paging only suits the desktop layout (full-height bands). It engages when
-  // BOTH hold: the viewport is past the CSS breakpoint (≥921px, where bands are
-  // full height) AND the primary pointer is precise (mouse/trackpad). That keeps
-  // snapping off on phones, small windows, and large touch tablets — where
-  // auto-height bands run taller than the viewport and snapping would clip them
-  // — while leaving the deliberate desktop snap intact. Both queries are live,
-  // so resizing or rotating re-evaluates without a reload.
-  const wideViewport = window.matchMedia("(min-width: 921px)");
-  const finePointer = window.matchMedia("(pointer: fine)");
-  const pagingActive = () => wideViewport.matches && finePointer.matches;
+  // wideViewport / finePointer / pagingActive are declared at module scope (the
+  // header backdrop logic shares them). Paging only suits the desktop layout
+  // (full-height bands) with a precise pointer, keeping snapping off on phones,
+  // small windows, and large touch tablets — where auto-height bands run taller
+  // than the viewport and snapping would clip them.
 
   // the footer is a page too, so the last band can scroll down into it
   const footer = document.querySelector(".site-footer");
