@@ -1,0 +1,1120 @@
+/* ============================================================
+   Syneera — open research initiative
+   Alternating light / dark bands, six sections.
+   Self-contained: no framework, no external fonts, no network.
+   ============================================================ */
+
+:root {
+  /* light band palette */
+  --l-bg: #f4f3ee;
+  --l-bg-2: #ebeae3;
+  --l-text: #11161a;
+  --l-text-soft: #41494e;
+  --l-muted: #6a7178;
+  --l-line: rgba(17, 22, 26, 0.14);
+  --l-line-strong: rgba(17, 22, 26, 0.28);
+  --l-accent: #2f6f63;
+
+  /* dark band palette */
+  --d-bg: #05080f;
+  --d-bg-2: #0a1018;
+  --d-text: #f3f1ea;
+  --d-text-soft: #c4cdd4;
+  --d-muted: #8a96a0;
+  --d-line: rgba(238, 244, 248, 0.16);
+  --d-line-strong: rgba(238, 244, 248, 0.30);
+  --d-accent: #57c8d6;
+
+  --container: 1240px;
+  --header-h: 76px;
+  --space-band: clamp(96px, 13vh, 168px);
+
+  --font-body: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-display: Georgia, "Times New Roman", "Liberation Serif", serif;
+
+  --ease: cubic-bezier(0.4, 0, 0.1, 1);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  /* no CSS scroll-behavior: smooth here — it makes the browser animate the
+     jump to a #hash on refresh/load, which reads as the page slowly
+     auto-scrolling. In-page nav clicks get smooth scroll from script.js. */
+  /* hide the scrollbar chrome (Firefox / legacy) */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: var(--d-bg);
+  color: var(--l-text);
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+p {
+  margin: 0;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 500;
+  line-height: 1.07;
+  letter-spacing: -0.01em;
+}
+
+:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 100;
+  padding: 12px 18px;
+  background: var(--d-bg);
+  color: var(--d-text);
+}
+
+.skip-link:focus {
+  left: 16px;
+  top: 16px;
+}
+
+/* ---------- header ---------- */
+
+.site-header {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  min-height: var(--header-h);
+  padding: 0 clamp(20px, 4vw, 56px);
+  color: var(--d-text);
+  background: transparent;
+  -webkit-backdrop-filter: blur(0);
+  backdrop-filter: blur(0);
+  transition: background 320ms var(--ease), color 320ms var(--ease),
+    border-color 320ms var(--ease), backdrop-filter 320ms var(--ease),
+    -webkit-backdrop-filter 320ms var(--ease);
+  border-bottom: 1px solid transparent;
+}
+
+/* while a band boundary cuts through the header, fade in a soft blur + a
+   band-tinted scrim so the wordmark/nav stay legible across the seam.
+   Resting within a single band, the header stays fully transparent. */
+.site-header.in-transition {
+  background: color-mix(in srgb, var(--d-bg) 62%, transparent);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  border-bottom-color: var(--d-line);
+}
+
+/* header text adapts to the band currently behind it */
+.site-header.on-light {
+  color: var(--l-text);
+}
+
+.site-header.on-light.in-transition {
+  background: color-mix(in srgb, var(--l-bg) 64%, transparent);
+  border-bottom-color: var(--l-line);
+}
+
+.wordmark {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  text-indent: 0em;
+}
+
+.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: clamp(20px, 3vw, 48px);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.site-nav a {
+  position: relative;
+  opacity: 0.7;
+  transition: opacity 200ms var(--ease);
+}
+
+.site-nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 240ms var(--ease), opacity 240ms var(--ease), height 240ms var(--ease);
+}
+
+/* hover/focus on a NON-current link: a faint, thin line slides in — "I'd go
+   here", distinct from the current section's solid line below */
+.site-nav a:hover,
+.site-nav a:focus-visible {
+  opacity: 0.92;
+}
+
+.site-nav a:hover::after,
+.site-nav a:focus-visible::after {
+  transform: scaleX(1);
+  opacity: 0.4;
+}
+
+/* the current section: a solid, full underline that's always present and
+   brighter than any hover line, so "where I am" never reads as "where I point" */
+.site-nav a.is-current {
+  opacity: 1;
+}
+
+.site-nav a.is-current::after {
+  transform: scaleX(1);
+  opacity: 1;
+  height: 2px;
+}
+
+/* ---------- bands ---------- */
+
+.band {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: grid;
+  align-items: center;
+  min-height: 100svh;
+  padding-block: var(--space-band);
+}
+
+.band-light {
+  --bg: var(--l-bg);
+  --bg-2: var(--l-bg-2);
+  --text: var(--l-text);
+  --text-soft: var(--l-text-soft);
+  --muted: var(--l-muted);
+  --line: var(--l-line);
+  --line-strong: var(--l-line-strong);
+  --accent: var(--l-accent);
+  background: linear-gradient(165deg, var(--l-bg) 0%, var(--l-bg-2) 100%);
+  color: var(--l-text);
+}
+
+.band-dark {
+  --bg: var(--d-bg);
+  --bg-2: var(--d-bg-2);
+  --text: var(--d-text);
+  --text-soft: var(--d-text-soft);
+  --muted: var(--d-muted);
+  --line: var(--d-line);
+  --line-strong: var(--d-line-strong);
+  --accent: var(--d-accent);
+  background: radial-gradient(120% 90% at 78% 30%, var(--d-bg-2) 0%, var(--d-bg) 64%);
+  color: var(--d-text);
+}
+
+.band-inner {
+  position: relative;
+  z-index: 3;
+  width: min(100% - clamp(40px, 8vw, 112px), var(--container));
+  margin-inline: auto;
+}
+
+.band-inner-narrow {
+  max-width: 680px;
+  /* nudge the centred copy block up a touch so it doesn't sit dead-centre */
+  transform: translateY(-2.5%);
+}
+
+/* in the narrow split columns a full-size h2 crowds the copy beneath it, so
+   step the heading down to suit the tighter measure */
+.band-inner-narrow h2 {
+  font-size: clamp(2rem, 3.4vw, 3.4rem);
+}
+
+/* breathing room for the flowing copy in the split sections (Vision, Question,
+   Fields): a gap under the title, between stacked paragraphs, and a larger gap
+   before the closing link */
+.band-inner-narrow h2 + p,
+.band-inner-narrow h2 + ul {
+  margin-top: 34px;
+}
+
+.band-inner-narrow p + p {
+  margin-top: 18px;
+}
+
+.band-inner-narrow > .link-arrow {
+  margin-top: 44px;
+}
+
+/* split layout: copy left, visual filling the right half */
+.band-split .band-visual-right {
+  inset: 0 0 0 auto;
+  width: min(62vw, 880px);
+}
+
+/* visual layer (canvas placeholder + optional image asset) */
+.band-visual {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.band-visual .signal-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* ---- image asset hook ----
+   Set `--asset: url("assets/xxx.webp")` on any .band to drop in a real
+   visual. When set, the asset paints over the canvas placeholder. When
+   unset, this layer is empty and the live canvas shows through — so the
+   page is never broken, with or without assets. Each band also exposes
+   --asset-pos / --asset-size for fine placement. */
+.band-visual::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: var(--asset, none);
+  background-repeat: no-repeat;
+  background-position: var(--asset-pos, center right);
+  background-size: var(--asset-size, cover);
+  pointer-events: none;
+}
+
+/* Dark-band glow assets ship on a black background. `screen` blending drops
+   that black into the band colour (black contributes nothing in screen mode),
+   so only the luminous graphic remains — no visible image rectangle/frame. */
+.band-dark .band-visual::after {
+  mix-blend-mode: screen;
+}
+
+/* when a band has a real asset, fade out the canvas placeholder under it */
+.has-asset .signal-canvas {
+  opacity: 0;
+}
+
+/* readability scrim over the visual so text never fights the field */
+.band-light::after,
+.band-dark::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.band-split.band-light::after {
+  background: linear-gradient(
+    90deg,
+    var(--l-bg) 0%,
+    color-mix(in srgb, var(--l-bg) 92%, transparent) 34%,
+    transparent 70%
+  );
+}
+
+.band-split.band-dark::after {
+  background: linear-gradient(
+    90deg,
+    var(--d-bg) 0%,
+    color-mix(in srgb, var(--d-bg) 90%, transparent) 36%,
+    transparent 72%
+  );
+}
+
+.band-feature.band-dark::after {
+  background: radial-gradient(
+    140% 120% at 50% 30%,
+    transparent 30%,
+    color-mix(in srgb, var(--d-bg) 70%, transparent) 100%
+  );
+}
+
+/* full-bleed feature band WITH a screen-blended image: the black background
+   already vanishes, so two gentle washes — a top one behind the heading and a
+   bottom one behind the pillar grid, where the glowing field would otherwise
+   swallow the card copy. The bright middle is left clear. */
+.band-feature.band-dark.has-asset::after {
+  background:
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--d-bg) 55%, transparent) 0%,
+      transparent 38%
+    ),
+    linear-gradient(
+      180deg,
+      transparent 55%,
+      color-mix(in srgb, var(--d-bg) 60%, transparent) 78%,
+      color-mix(in srgb, var(--d-bg) 78%, transparent) 100%
+    );
+}
+
+.band-home.band-light::after {
+  background: linear-gradient(
+    100deg,
+    var(--l-bg) 0%,
+    color-mix(in srgb, var(--l-bg) 80%, transparent) 40%,
+    transparent 80%
+  );
+}
+
+/* light feature band WITH an image: two stacked washes — a left-to-right one so
+   the left-aligned copy reads over the bright field, and a bottom-up one so the
+   pillar grid stays legible over the busiest part of the photo. The clear right
+   side of the image is left untouched. */
+.band-feature.band-light.has-asset::after {
+  background:
+    linear-gradient(
+      90deg,
+      color-mix(in srgb, var(--l-bg) 48%, transparent) 0%,
+      color-mix(in srgb, var(--l-bg) 24%, transparent) 30%,
+      transparent 62%
+    ),
+    linear-gradient(
+      180deg,
+      transparent 42%,
+      color-mix(in srgb, var(--l-bg) 24%, transparent) 70%,
+      color-mix(in srgb, var(--l-bg) 38%, transparent) 100%
+    );
+}
+
+/* ---------- type ---------- */
+
+.eyebrow {
+  margin: 0 0 22px;
+  color: var(--accent);
+  font-family: var(--font-body);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+h1 {
+  max-width: 15ch;
+  font-size: clamp(2.9rem, 6.4vw, 6.6rem);
+}
+
+h2 {
+  max-width: 16ch;
+  font-size: clamp(2.3rem, 4.6vw, 4.6rem);
+}
+
+h3 {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 1.3;
+}
+
+.band p {
+  color: var(--text-soft);
+}
+
+/* the central question, lifted out of the body copy so it lands on the reader */
+.pull-question {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(1.12rem, 1.5vw, 1.32rem);
+  line-height: 1.4;
+  color: var(--text);
+}
+.band .pull-question {
+  color: var(--text);
+}
+
+/* when the central question closes a feature head, give it room to breathe */
+.feature-head .pull-question {
+  margin-top: 30px;
+  max-width: none;
+}
+
+.band-inner-narrow > .pull-question {
+  margin-top: 40px;
+}
+
+/* match the space below the central question to the space above it */
+.band-inner-narrow > .pull-question + p {
+  margin-top: 40px;
+}
+
+.lede {
+  max-width: 46ch;
+  margin-top: 30px;
+  color: var(--text);
+  font-size: clamp(1.12rem, 1.7vw, 1.42rem);
+  line-height: 1.5;
+}
+
+/* ---------- home ---------- */
+
+.home-inner {
+  max-width: var(--container);
+}
+
+.home-inner h1 {
+  margin-top: 4px;
+}
+
+.scroll-cue {
+  position: absolute;
+  /* aligned to the content's left edge, as in the concept images */
+  left: clamp(20px, 8vw, 112px);
+  bottom: clamp(24px, 5vh, 48px);
+  z-index: 3;
+  display: grid;
+  grid-auto-flow: column;
+  align-items: center;
+  gap: 16px;
+  color: var(--muted);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.scroll-cue-line {
+  width: 60px;
+  height: 1px;
+  background: linear-gradient(90deg, currentColor, transparent);
+  animation: cue 2.6s var(--ease) infinite;
+  transform-origin: left;
+}
+
+@keyframes cue {
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: scaleX(0.55);
+  }
+  50% {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+
+/* ---------- links ---------- */
+
+.link-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text);
+}
+
+.link-arrow::after {
+  content: "";
+  width: 34px;
+  height: 1px;
+  background: currentColor;
+  transition: width 240ms var(--ease);
+}
+
+.link-arrow:hover,
+.link-arrow:focus-visible {
+  color: var(--accent);
+}
+
+.link-arrow:hover::after,
+.link-arrow:focus-visible::after {
+  width: 52px;
+}
+
+/* ---------- living web: pillar grid ---------- */
+
+/* The base .band centres its inner block vertically, which on tall/wide viewports
+   leaves the heading→pillar block floating in the middle with the grid pushed far
+   down the band. Feature bands lead with copy and end on the pillar grid, so they
+   read better top-anchored: the heading sits below the header, the grid follows
+   right after it, and any slack collects at the band's foot instead of between the
+   text and the cards. (Split/home bands keep the centred layout.) */
+/* Only feature bands that END in a pillar grid need the top-anchored treatment:
+   the grid is their last element, so centring leaves it floating low with a big
+   gap under the copy. Top-anchor them and trim the foot padding so the grid sits
+   close to the text. A copy-only feature band (e.g. principles) has no trailing
+   grid, so it keeps the base centred layout — top-anchoring would just drop its
+   text to the top with dead space below. */
+.band-feature:has(.pillar-grid) {
+  align-items: start;
+  padding-bottom: clamp(64px, 7vh, 96px);
+}
+
+.band-feature .band-inner {
+  display: grid;
+  /* keep the heading→grid gap from ballooning on tall viewports (was 6vh→72px,
+     which on a 1080p screen pushed the cards well clear of the copy); a tighter
+     vh factor and cap keeps the grid close to the text at every width */
+  gap: clamp(40px, 4vh, 52px);
+}
+
+.feature-head {
+  max-width: 760px;
+}
+
+/* match the stepped-down heading size used in the narrow split columns so the
+   feature titles don't tower over their copy */
+.feature-head h2 {
+  font-size: clamp(2rem, 3.4vw, 3.4rem);
+}
+
+.feature-head-wide {
+  max-width: 900px;
+}
+
+.feature-lede {
+  margin-top: 26px;
+  font-size: clamp(1.05rem, 1.5vw, 1.3rem);
+  line-height: 1.55;
+  max-width: 60ch;
+}
+
+/* body paragraphs in a feature head: gap under the title and between paragraphs.
+   Match the narrow split columns so eyebrow→title→body spacing is identical
+   across every section (eyebrow margin 22px from .eyebrow, title→body 34px). */
+.feature-head h2 + p {
+  margin-top: 34px;
+}
+.feature-head p {
+  max-width: 64ch;
+  line-height: 1.6;
+}
+.feature-head p + p {
+  margin-top: 18px;
+}
+
+.pillar-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0;
+  border-top: 1px solid var(--line-strong);
+}
+
+.pillar {
+  padding: 32px clamp(20px, 2vw, 34px) 0 0;
+}
+
+.pillar + .pillar {
+  padding-left: clamp(20px, 2vw, 34px);
+  border-left: 1px solid var(--line);
+}
+
+.pillar-mark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  margin-bottom: 22px;
+  border: 1.5px solid var(--accent);
+  border-radius: 50%;
+  color: var(--accent);
+}
+
+.pillar-mark svg {
+  width: 22px;
+  height: 22px;
+}
+
+.pillar h3 {
+  margin-bottom: 12px;
+}
+
+.pillar p {
+  font-size: 0.96rem;
+  color: var(--text-soft);
+}
+
+/* ---------- footer ---------- */
+
+.site-footer {
+  background: var(--d-bg);
+  color: var(--d-text);
+  padding: clamp(64px, 9vh, 110px) clamp(20px, 4vw, 56px) 56px;
+  border-top: 1px solid var(--d-line);
+}
+
+.footer-inner {
+  width: min(100%, var(--container));
+  margin-inline: auto;
+  display: grid;
+  gap: 28px;
+}
+
+.footer-brand {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 18px;
+}
+
+.footer-tag {
+  color: var(--d-muted);
+  font-size: 0.86rem;
+  letter-spacing: 0.04em;
+}
+
+.footer-note {
+  max-width: 62ch;
+  color: var(--d-text-soft);
+  font-size: 1.04rem;
+  line-height: 1.6;
+}
+
+.footer-contact {
+  margin: 0;
+}
+
+.footer-contact .link-arrow {
+  color: var(--d-text);
+}
+
+.footer-legal {
+  color: var(--d-muted);
+  font-size: 0.82rem;
+}
+
+/* ---------- reveal-on-scroll ---------- */
+
+/* only hide content once JS confirms it can reveal it again —
+   no-JS visitors and any observer failure leave everything visible */
+.js-reveal .reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 800ms var(--ease), transform 800ms var(--ease);
+}
+
+.js-reveal .reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---------- responsive ---------- */
+
+@media (max-width: 920px) {
+  .site-header {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 10px;
+    padding-block: 14px;
+    min-height: auto;
+  }
+
+  /* mobile/tablet scrolls freely, so content continuously slides under the fixed
+     header. The blur + tint live on a ::before layer BEHIND the text, masked to
+     fade out toward the top — so both the blur and the tint dissolve into the
+     band (no hard seam at the header's lower edge) rather than ending abruptly.
+     The header itself carries no backdrop, keeping its text crisp. The text
+     keeps the desktop adaptive behaviour (dark over light bands, light over
+     dark) via the on-light class script.js toggles — we never touch its colour. */
+  .site-header {
+    background: transparent;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    border-bottom-color: transparent;
+  }
+
+  .site-header::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    /* the nav sits across most of the header, so keep the backdrop solid down to
+       ~72% and only feather the lower edge into the band — no hard seam, but the
+       text zone above stays fully covered */
+    -webkit-mask-image: linear-gradient(180deg, #000 72%, transparent 100%);
+    mask-image: linear-gradient(180deg, #000 72%, transparent 100%);
+  }
+
+  /* tint held even across the text zone, then fading only over the lower edge so
+     the header dissolves into the band instead of ending on a hard seam — most
+     noticeable where the band is busy, e.g. principles */
+  .site-header::before {
+    background: linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--d-bg) 26%, transparent) 0%,
+      color-mix(in srgb, var(--d-bg) 24%, transparent) 60%,
+      transparent 100%
+    );
+  }
+
+  .site-header.on-light::before {
+    background: linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--l-bg) 30%, transparent) 0%,
+      color-mix(in srgb, var(--l-bg) 28%, transparent) 60%,
+      transparent 100%
+    );
+  }
+
+  .site-nav {
+    justify-content: flex-start;
+    gap: 14px 20px;
+    font-size: 0.82rem;
+  }
+
+  .band {
+    min-height: auto;
+    align-items: start;
+    padding-block: clamp(72px, 9vh, 104px);
+  }
+
+  /* the desktop split layout nudges its centred copy up by a % of the band
+     height; with auto-height top-aligned bands that % varies per section and
+     pushes the eyebrow under the header inconsistently. Drop it so every
+     section's eyebrow → title → body starts the same distance below the header. */
+  .band-inner-narrow {
+    transform: none;
+  }
+
+  /* clear the taller stacked mobile header */
+  .band-home {
+    padding-top: clamp(104px, 14vh, 140px);
+  }
+
+  /* on mobile the visual sits behind the full-width copy with a strong scrim */
+  .band-split .band-visual-right {
+    width: 100%;
+  }
+
+  /* Mobile split-band scrim. The earlier version ramped to a SOLID band colour
+     by ~70%, which fully hid the lower two-thirds of the background — built for
+     the old landscape assets. The portrait mobile assets are composed for this
+     crop and are already low-contrast (pale ground / dark field), so the copy
+     stays legible over a much gentler wash. Keep a soft top wash behind the
+     heading and a light partial wash lower down for the smaller body text, but
+     never fully cover — the network/glow now reads through. */
+  .band-split.band-light::after {
+    background: linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--l-bg) 30%, transparent) 0%,
+      color-mix(in srgb, var(--l-bg) 12%, transparent) 28%,
+      color-mix(in srgb, var(--l-bg) 32%, transparent) 100%
+    );
+  }
+
+  .band-split.band-dark::after {
+    background: linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--d-bg) 34%, transparent) 0%,
+      color-mix(in srgb, var(--d-bg) 14%, transparent) 28%,
+      color-mix(in srgb, var(--d-bg) 36%, transparent) 100%
+    );
+  }
+
+  /* Below the desktop breakpoint default to a SINGLE column. The old 2-column
+     rule here ran all the way down to 0px, so large phones (561–699px) showed
+     two columns where the card content didn't fit — the second column overran
+     and the cards read as a left/right zig-zag. Two columns only earn their
+     keep on a genuine tablet-width portrait, gated separately below. */
+  .pillar-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* In one column the cards stack, so the desktop COLUMN treatment must go: no
+     left gutter and no vertical divider (it just runs through the stacked copy).
+     Both come from the base `.pillar + .pillar` rule (specificity 0,2,0, applies
+     to every card but the first), which a single-class `.pillar` reset (0,1,0)
+     can't beat — so reset them on the same `.pillar + .pillar` selector here.
+     Cards are separated by a horizontal top border instead. */
+  .pillar + .pillar {
+    padding-left: 0;
+    border-left: 0;
+  }
+
+  .pillar:not(:first-child) {
+    border-top: 1px solid var(--line);
+  }
+}
+
+/* tablet portrait only: two columns fit here, so restore the 2×2 grid */
+@media (min-width: 700px) and (max-width: 920px) {
+  .pillar-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .pillar:nth-child(3),
+  .pillar:nth-child(4) {
+    margin-top: 32px;
+  }
+
+  .pillar:nth-child(even) {
+    padding-left: clamp(20px, 2vw, 34px);
+    border-left: 1px solid var(--line);
+  }
+
+  .pillar:nth-child(odd) {
+    border-left: 0;
+    padding-left: 0;
+  }
+}
+
+/* On tablet the nav links are still shown, so the header is taller (~84px) and
+   its lower row of links sits at ~69px. The ≤920px ::before blur ends at the
+   header's edge, so its 72% feather lands right across the links and content
+   scrolling under them shows through. Extend the blur layer well past the link
+   row so the links stay fully covered and the fade happens lower, into the band. */
+@media (min-width: 561px) and (max-width: 920px) {
+  .site-header::before {
+    bottom: -30px;
+  }
+}
+
+@media (max-width: 560px) {
+  body {
+    font-size: 16px;
+  }
+
+  /* On phones the six nav links wrap to two rows and push the header to ~119px,
+     where the eyebrow collides with it. For a single-page site the in-page nav
+     is a convenience, not the only way through — so drop the links and keep just
+     the wordmark in a low, single-row bar. The 920px block above switched the
+     header to a stacked column to fit the wrapping nav; with no nav to stack we
+     revert to a centred single row. */
+  .site-nav {
+    display: none;
+  }
+
+  .site-header {
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0;
+    padding: 12px clamp(20px, 6vw, 28px);
+    min-height: 56px;
+  }
+
+  /* the home band's top padding was sized to clear the tall stacked header;
+     now that the header is a short single row, lift the hero copy back up */
+  .band-home {
+    padding-top: clamp(76px, 12vh, 104px);
+  }
+
+  .scroll-cue {
+    display: none;
+  }
+
+  /* single column + stacked dividers are already set by the ≤920px block; just
+     trim the per-card top padding a touch on phones */
+  .pillar {
+    padding-top: 28px;
+  }
+
+  /* With no nav only the wordmark sits in the bar; let the ::before blur reach a
+     little further below SYNEERA so it has room to feather out gently. Extend the
+     layer past the header's lower edge and keep the original 72%-solid mask, so
+     the solid zone clears the wordmark and the fade lands a touch lower. */
+  .site-header::before {
+    bottom: -14px;
+  }
+}
+
+/* ---------- reduced motion ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ============================================================
+   IMAGE ASSET MAP
+   ------------------------------------------------------------
+   Each band points at a visual in ./assets/ via --asset, layered
+   over a canvas placeholder so the page degrades gracefully if an
+   asset is missing.
+   ============================================================ */
+
+/* 1 — home (light) · ethereal flowing wave, fades into off-white from the left */
+#home { --asset: url("assets/hero-wave.webp"); --asset-pos: right center; }
+
+/* 2 — vision (dark) · luminous particle ring, full bleed, screen-blended */
+#vision {
+  --asset: url("assets/vision-ring-full.webp");
+  --asset-pos: center;
+  --asset-size: cover;
+}
+
+/* 3 — question (light) · world-coloured network on a pale ground, full bleed;
+   normal blend (light asset, so no screen needed) */
+#question { --asset: url("assets/question-network.webp"); --asset-pos: center; --asset-size: cover; }
+
+/* 4 — open question (dark) · particle wave, full bleed, screen-blended. Copy is
+   left-aligned to the content gutter (like the feature sections), not centred
+   like the other narrow split columns. */
+#open-question {
+  --asset: url("assets/open-question.webp");
+  --asset-pos: center;
+  --asset-size: cover;
+}
+/* left-align the narrow copy column to the content gutter (like the feature
+   sections) instead of centring it — used by Vision, Question and Open Question */
+#vision .band-inner,
+#question .band-inner,
+#open-question .band-inner {
+  width: min(100% - clamp(40px, 8vw, 112px), var(--container));
+}
+#vision .band-inner-narrow,
+#question .band-inner-narrow,
+#open-question .band-inner-narrow {
+  max-width: none;
+}
+#vision .band-inner-narrow > *,
+#question .band-inner-narrow > *,
+#open-question .band-inner-narrow > * {
+  max-width: 680px;
+}
+
+/* 5 — principles / living web (light) · mycelial network on a pale ground along
+   the lower edge; normal blend (light asset, so no screen needed) */
+#principles { --asset: url("assets/principles.webp"); --asset-pos: center bottom; --asset-size: cover; }
+/* its photo is darker/more saturated than direction's, so the shared light wash
+   isn't enough behind the copy — strengthen the left/bottom washes here only */
+#principles.band-feature.band-light.has-asset::after {
+  background:
+    linear-gradient(
+      90deg,
+      color-mix(in srgb, var(--l-bg) 82%, transparent) 0%,
+      color-mix(in srgb, var(--l-bg) 56%, transparent) 30%,
+      transparent 64%
+    ),
+    linear-gradient(
+      180deg,
+      transparent 40%,
+      color-mix(in srgb, var(--l-bg) 56%, transparent) 70%,
+      color-mix(in srgb, var(--l-bg) 74%, transparent) 100%
+    );
+}
+
+/* 6 — fields (dark) · golden exploration field, full bleed, screen-blended */
+#fields { --asset: url("assets/exploration.webp"); --asset-pos: center; --asset-size: cover; }
+
+/* 7 — direction (light) · luminous connection field on a pale ground, full bleed;
+   normal blend (light asset, so no screen needed) */
+#direction { --asset: url("assets/direction.webp"); --asset-pos: center; --asset-size: cover; }
+/* dark hairlines like principles */
+#direction .pillar-grid { border-top-color: rgba(17, 22, 26, 0.42); }
+#direction .pillar + .pillar { border-left-color: rgba(17, 22, 26, 0.22); }
+/* the right end of the photo turns dark blue under the grid, where the dark
+   hairlines vanish. Keep the gentle left wash, but lift the bottom wash here so
+   the lower strip pales evenly and the dividers read across the full width. */
+#direction.band-feature.band-light.has-asset::after {
+  background:
+    linear-gradient(
+      90deg,
+      color-mix(in srgb, var(--l-bg) 48%, transparent) 0%,
+      color-mix(in srgb, var(--l-bg) 24%, transparent) 30%,
+      transparent 62%
+    ),
+    linear-gradient(
+      180deg,
+      transparent 48%,
+      color-mix(in srgb, var(--l-bg) 62%, transparent) 72%,
+      color-mix(in srgb, var(--l-bg) 82%, transparent) 100%
+    );
+}
+
+/* ---------- mobile background assets ----------
+   The desktop assets are landscape (≈16:9) and crop badly to a vertical phone
+   viewport. Each section has a portrait (941×1672) mobile asset composed for
+   the narrow crop, swapped in here. Position resets to `center` — the mobile
+   images are already framed for the phone, so they don't need the per-section
+   focal nudges the landscape assets did.
+
+   These rules live AFTER the IMAGE ASSET MAP on purpose: --asset/--asset-pos are
+   set per section there, and media queries add no specificity, so an override
+   must come later in source order to win. */
+@media (max-width: 560px) {
+  #home { --asset: url("assets/hero-wave-mob.webp"); --asset-pos: center; }
+  #vision { --asset: url("assets/vision-ring-mob.webp"); --asset-pos: center; }
+  #question { --asset: url("assets/question-network-mob.webp"); --asset-pos: center; }
+  #open-question { --asset: url("assets/open-question-mob.webp"); --asset-pos: center; --asset-size: cover; }
+  #principles { --asset: url("assets/principles-mob.webp"); --asset-pos: center; }
+  #fields { --asset: url("assets/exploration-mob.webp"); --asset-pos: center; }
+  #direction { --asset: url("assets/direction-mob.webp"); --asset-pos: center; }
+}
+
+/* Mobile scrim for the LIGHT feature bands (Principles, Direction). Their
+   desktop scrims wash the left + bottom — built for a landscape photo whose
+   bright field sat low. The portrait mobile assets are brightest in their UPPER
+   half, exactly where the heading and body copy sit, so dark text was washing
+   out. Swap to a top-weighted vertical wash: strongest behind the copy up top,
+   easing downward so the luminous field still reads behind the lower cards.
+   (Fields is a dark band — light text over the dark asset already reads, so it
+   keeps its scrim.)
+
+   ID selectors here match the specificity of the per-section #principles /
+   #direction desktop overrides above; media queries add no specificity, so a
+   plain class rule would lose to them. */
+@media (max-width: 560px) {
+  #principles.band-feature.band-light.has-asset::after,
+  #direction.band-feature.band-light.has-asset::after {
+    background: linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--l-bg) 80%, transparent) 0%,
+      color-mix(in srgb, var(--l-bg) 74%, transparent) 55%,
+      color-mix(in srgb, var(--l-bg) 58%, transparent) 82%,
+      color-mix(in srgb, var(--l-bg) 32%, transparent) 100%
+    );
+  }
+}
