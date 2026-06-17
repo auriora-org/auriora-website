@@ -575,6 +575,28 @@ h3 {
   gap: clamp(40px, 4vh, 52px);
 }
 
+/* Feature bands with a pillar grid (Fields, Direction) fill ≥1 screen but their
+   copy+grid block is usually a little shorter, leaving slack. Instead of
+   centring the whole block (which floats the grid in mid-band), split the band:
+   the heading copy is centred in the space above and the 4-up grid is pinned to
+   the bottom edge. To do this the inner grid must span the band's full height,
+   so stretch the band's content and give the inner two rows — copy takes the
+   free space (1fr), the grid takes only its own height (auto) at the foot.
+   Where there's no slack the 1fr row collapses to the copy's height and this
+   reads like a normal top-aligned block — nothing overflows. Applies at every
+   width (desktop, tablet, single-column phone alike). */
+.band-feature:has(.pillar-grid) {
+  align-items: stretch;
+}
+
+.band-feature:has(.pillar-grid) .band-inner {
+  grid-template-rows: 1fr auto;
+}
+
+.band-feature:has(.pillar-grid) .feature-head {
+  align-self: center;
+}
+
 .feature-head {
   max-width: 760px;
 }
@@ -783,11 +805,27 @@ h3 {
     font-size: 0.82rem;
   }
 
+  /* Every band fills at least one screen so short sections (e.g. Home) no longer
+     collapse to a stub of content with empty space below. Short content is
+     centred vertically; long content (it exceeds the viewport) grows the band
+     past 100svh and stays scrollable as before. padding-block keeps a minimum
+     gap above/below so centred content never tucks under the fixed header or
+     hugs the lower edge. */
   .band {
-    min-height: auto;
-    align-items: start;
+    min-height: 100svh;
+    align-items: center;
     padding-block: clamp(72px, 9vh, 104px);
   }
+
+  /* Feature bands WITH a pillar grid (Fields, Direction) use the base split rule
+     (copy centred above, grid pinned to the foot via stretch + 1fr/auto rows) at
+     every width — including here. On a single-column phone the stacked cards make
+     the band much taller than the viewport, so the 1fr row collapses and it reads
+     as a normal top-aligned block; on tablet/desktop the slack opens up and the
+     grid sits at the foot. Either way we must NOT revert to align-items:start,
+     which would kill the stretch the split depends on. Principles is a
+     .band-feature too but has NO grid, so it stays centred like the short
+     sections (handled by the base .band align-items:center). */
 
   /* the desktop split layout nudges its centred copy up by a % of the band
      height; with auto-height top-aligned bands that % varies per section and
@@ -862,6 +900,8 @@ h3 {
   .pillar-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+  /* the copy-centred / grid-pinned-to-foot split is now a base rule (applies at
+     every width); only the 2-column grid is tablet-specific here */
 
   .pillar:nth-child(3),
   .pillar:nth-child(4) {
