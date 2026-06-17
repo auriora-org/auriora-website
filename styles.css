@@ -567,23 +567,6 @@ h3 {
 
 /* ---------- living web: pillar grid ---------- */
 
-/* The base .band centres its inner block vertically, which on tall/wide viewports
-   leaves the heading→pillar block floating in the middle with the grid pushed far
-   down the band. Feature bands lead with copy and end on the pillar grid, so they
-   read better top-anchored: the heading sits below the header, the grid follows
-   right after it, and any slack collects at the band's foot instead of between the
-   text and the cards. (Split/home bands keep the centred layout.) */
-/* Only feature bands that END in a pillar grid need the top-anchored treatment:
-   the grid is their last element, so centring leaves it floating low with a big
-   gap under the copy. Top-anchor them and trim the foot padding so the grid sits
-   close to the text. A copy-only feature band (e.g. principles) has no trailing
-   grid, so it keeps the base centred layout — top-anchoring would just drop its
-   text to the top with dead space below. */
-.band-feature:has(.pillar-grid) {
-  align-items: start;
-  padding-bottom: clamp(64px, 7vh, 96px);
-}
-
 .band-feature .band-inner {
   display: grid;
   /* keep the heading→grid gap from ballooning on tall viewports (was 6vh→72px,
