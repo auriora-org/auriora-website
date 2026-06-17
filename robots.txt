@@ -1,0 +1,5 @@
+# Allow all crawlers full access to the site.
+User-agent: *
+Allow: /
+
+Sitemap: https://syneera.org/sitemap.xml

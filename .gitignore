@@ -1,0 +1,10 @@
+# Editor / local history
+.history/
+.claude/
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
