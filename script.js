@@ -2,6 +2,14 @@
 
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
+// Paging (one-band-per-gesture snap) only engages on the desktop layout AND a
+// precise pointer. These two live queries drive the reveal-arming below, the
+// header backdrop logic, and the paging block further down, so they're declared
+// once up here.
+const wideViewport = window.matchMedia("(min-width: 921px)");
+const finePointer = window.matchMedia("(pointer: fine)");
+const pagingActive = () => wideViewport.matches && finePointer.matches;
+
 // Take over scroll restoration. With the browser's default "auto", a reload
 // restores the old scrollY before the .reveal sections have un-hidden, so the
 // 28px reveal offset throws the restored position off — each F5 drifts the
@@ -79,7 +87,18 @@ document.querySelectorAll('a[href^="#"]').forEach((link) => {
 /* ---------- reveal-on-scroll ---------- */
 
 const revealItems = document.querySelectorAll(".reveal");
-if ("IntersectionObserver" in window && !reduceMotion.matches) {
+if ("IntersectionObserver" in window && !reduceMotion.matches && !pagingActive()) {
+  // Skip the reveal entirely when paging is active. The .reveal hidden state
+  // adds a translateY(28px) offset, and paging snaps to a band with
+  // scrollIntoView. If the first Home→Vision gesture lands while Vision (the
+  // first .reveal band) is still mid-reveal, the snap targets its offset
+  // position; as the transform settles back to 0 the scroll position stays put,
+  // so the band ends up 28px high and the next band's top peeks above the fold.
+  // Snapping always rests exactly on a band top, so the entrance animation buys
+  // nothing here anyway — free scroll (desktop without paging) and mobile still
+  // get it via the branch below. Re-snapping to another band and back "fixed" it
+  // only because by then the transform had finished; arming it never closes that
+  // window cleanly, so we don't arm it at all.
   // arm the hidden state only now that we can guarantee revealing it
   document.documentElement.classList.add("js-reveal");
   const io = new IntersectionObserver(
@@ -117,12 +136,8 @@ const bands = Array.from(document.querySelectorAll(".band"));
 const navLinks = Array.from(document.querySelectorAll(".site-nav a"));
 const navTargets = navLinks.map((a) => document.querySelector(a.getAttribute("href")));
 
-// Paging (one-band-per-gesture snap) only engages on the desktop layout AND a
-// precise pointer. These two live queries drive both the header backdrop logic
-// below and the paging block further down, so they're declared once here.
-const wideViewport = window.matchMedia("(min-width: 921px)");
-const finePointer = window.matchMedia("(pointer: fine)");
-const pagingActive = () => wideViewport.matches && finePointer.matches;
+// wideViewport / finePointer / pagingActive are declared at the top of the file
+// (the reveal-arming uses them too); the header backdrop logic below shares them.
 
 let ticking = false;
 
