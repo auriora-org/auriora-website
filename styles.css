@@ -890,6 +890,23 @@ h3 {
     );
   }
 
+  #vision.band-split.band-dark::after {
+    background:
+      radial-gradient(
+        105% 44% at 24% 68%,
+        color-mix(in srgb, var(--d-bg) 46%, transparent) 0%,
+        color-mix(in srgb, var(--d-bg) 30%, transparent) 48%,
+        color-mix(in srgb, var(--d-bg) 10%, transparent) 78%,
+        transparent 100%
+      ),
+      linear-gradient(
+        180deg,
+        color-mix(in srgb, var(--d-bg) 36%, transparent) 0%,
+        color-mix(in srgb, var(--d-bg) 16%, transparent) 30%,
+        color-mix(in srgb, var(--d-bg) 46%, transparent) 100%
+      );
+  }
+
   /* Below the desktop breakpoint default to a SINGLE column. The old 2-column
      rule here ran all the way down to 0px, so large phones (561–699px) showed
      two columns where the card content didn't fit — the second column overran
@@ -1115,6 +1132,82 @@ h3 {
       color-mix(in srgb, var(--l-bg) 62%, transparent) 72%,
       color-mix(in srgb, var(--l-bg) 82%, transparent) 100%
     );
+}
+
+@media (min-width: 561px) and (max-width: 920px) {
+  #principles.band-feature.band-light.has-asset::after,
+  #direction.band-feature.band-light.has-asset::after {
+    clip-path: inset(116px 0 0 0);
+  }
+
+  #principles.band-feature.band-light.has-asset::after {
+    background:
+      radial-gradient(
+        110% 64% at 18% 35%,
+        color-mix(in srgb, var(--l-bg) 78%, transparent) 0%,
+        color-mix(in srgb, var(--l-bg) 60%, transparent) 44%,
+        color-mix(in srgb, var(--l-bg) 20%, transparent) 76%,
+        transparent 100%
+      ),
+      radial-gradient(
+        94% 42% at 22% 62%,
+        color-mix(in srgb, var(--l-bg) 58%, transparent) 0%,
+        color-mix(in srgb, var(--l-bg) 36%, transparent) 48%,
+        color-mix(in srgb, var(--l-bg) 10%, transparent) 78%,
+        transparent 100%
+      ),
+      linear-gradient(
+        90deg,
+        color-mix(in srgb, var(--l-bg) 44%, transparent) 0%,
+        color-mix(in srgb, var(--l-bg) 20%, transparent) 40%,
+        transparent 72%
+      ),
+      linear-gradient(
+        180deg,
+        transparent 42%,
+        color-mix(in srgb, var(--l-bg) 36%, transparent) 72%,
+        color-mix(in srgb, var(--l-bg) 50%, transparent) 100%
+      );
+  }
+
+  #direction.band-feature.band-light.has-asset::after {
+    background:
+      radial-gradient(
+        110% 52% at 20% 30%,
+        color-mix(in srgb, var(--l-bg) 72%, transparent) 0%,
+        color-mix(in srgb, var(--l-bg) 50%, transparent) 45%,
+        color-mix(in srgb, var(--l-bg) 14%, transparent) 76%,
+        transparent 100%
+      ),
+      radial-gradient(
+        120% 48% at 50% 79%,
+        color-mix(in srgb, var(--l-bg) 56%, transparent) 0%,
+        color-mix(in srgb, var(--l-bg) 38%, transparent) 50%,
+        color-mix(in srgb, var(--l-bg) 14%, transparent) 78%,
+        transparent 100%
+      ),
+      linear-gradient(
+        90deg,
+        color-mix(in srgb, var(--l-bg) 32%, transparent) 0%,
+        color-mix(in srgb, var(--l-bg) 14%, transparent) 34%,
+        transparent 66%
+      ),
+      linear-gradient(
+        180deg,
+        transparent 48%,
+        color-mix(in srgb, var(--l-bg) 54%, transparent) 73%,
+        color-mix(in srgb, var(--l-bg) 70%, transparent) 100%
+      );
+  }
+
+  #principles .feature-head p {
+    color: #253035;
+  }
+
+  #direction .feature-head p,
+  #direction .pillar p {
+    color: #253035;
+  }
 }
 
 /* Short desktop viewports (the bug repro: a laptop with a lower screen / a
