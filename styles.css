@@ -997,8 +997,12 @@ h3 {
     padding-top: clamp(76px, 12vh, 104px);
   }
 
+  /* keep the scroll cue on phones — the home band still fills the screen with
+     ample room below the lede, and on a single-page site it's the clearest hint
+     that there's more below. Sit it above the safe-area inset so it clears the
+     iOS home indicator / gesture bar. */
   .scroll-cue {
-    display: none;
+    bottom: calc(clamp(20px, 4vh, 36px) + env(safe-area-inset-bottom, 0px));
   }
 
   /* single column + stacked dividers are already set by the ≤920px block; just
