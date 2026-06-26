@@ -20,7 +20,7 @@ const pagingActive = () => wideViewport.matches && finePointer.matches;
 // restore the saved position ourselves AFTER layout has settled, so a refresh
 // keeps the user where they were without the drift. An incoming #hash (shared
 // deep link) wins over the saved position.
-const SCROLL_KEY = "syneera:scrollY";
+const SCROLL_KEY = "auriora:scrollY";
 if ("scrollRestoration" in history) {
   history.scrollRestoration = "manual";
 

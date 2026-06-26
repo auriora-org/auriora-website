@@ -2,4 +2,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://syneera.org/sitemap.xml
+Sitemap: https://auriora.org/sitemap.xml
