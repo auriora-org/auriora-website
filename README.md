@@ -1,13 +1,13 @@
-# Syneera - Website
+# Auriora - Website
 
-The website for **Syneera**, an open research initiative exploring intelligence,
+The website for **Auriora**, an open research initiative exploring intelligence,
 adaptation and communication across living systems through observation,
 measurement and open experimentation.
 
-> Syneera is not a theory to defend, but a question to explore:
+> Auriora is not a theory to defend, but a question to explore:
 > *What is intelligence, and how does it emerge in different living systems?*
 
-Live: **https://syneera.org/**
+Live: **https://auriora.org/**
 
 ## Overview
 
@@ -88,6 +88,6 @@ The site uses Cloudflare Web Analytics (beacon loaded in `index.html`).
 
 ## Contact
 
-contact@syneera.org
+contact@auriora.org
 
-© Syneera
+© Auriora
