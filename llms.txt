@@ -1,55 +1,55 @@
-# Syneera
+# Auriora
 
-> Syneera is an open research initiative exploring intelligence, adaptation and communication across living systems through observation, measurement and open experimentation. It begins with observation rather than assumptions, studying signals, interactions and patterns across living systems to better understand the principles that may underlie intelligence itself.
+> Auriora is an open research initiative exploring intelligence, adaptation and communication across living systems through observation, measurement and open experimentation. It begins with observation rather than assumptions, studying signals, interactions and patterns across living systems to better understand the principles that may underlie intelligence itself.
 
-Syneera is not a theory to defend, but a question to explore: What is intelligence, and how does it emerge in different living systems? The work is open — over time it will be supported by openly developed tools, technologies, experiments and shared research.
+Auriora is not a theory to defend, but a question to explore: What is intelligence, and how does it emerge in different living systems? The work is open — over time it will be supported by openly developed tools, technologies, experiments and shared research.
 
-- Site: https://syneera.org/
+- Site: https://auriora.org/
 - Single-page website (English). All sections below are anchors on the home page.
-- Contact: contact@syneera.org
+- Contact: contact@auriora.org
 
 ## Vision
 
-Understanding intelligence beyond familiar boundaries. Intelligence is often associated with brains, cognition and human experience, yet throughout nature we find systems that sense, adapt, communicate and coordinate in ways that challenge these boundaries. Syneera explores how intelligence emerges in different living systems.
+Understanding intelligence beyond familiar boundaries. Intelligence is often associated with brains, cognition and human experience, yet throughout nature we find systems that sense, adapt, communicate and coordinate in ways that challenge these boundaries. Auriora explores how intelligence emerges in different living systems.
 
-- [Vision](https://syneera.org/#vision)
+- [Vision](https://auriora.org/#vision)
 
 ## The question
 
 What is intelligence, and how does it emerge in different systems? We recognize intelligence the moment we encounter it, yet it is hard to say what makes a system intelligent. A person learns from experience, a plant adapts to its environment, a colony coordinates without a central leader, an ecosystem reorganizes over time. Despite their differences, each senses its surroundings, responds, adapts and organizes itself in relation to the world.
 
-- [The question](https://syneera.org/#question)
+- [The question](https://auriora.org/#question)
 
 ## An open question
 
-Why do we still struggle to explain intelligence? It is one of the most familiar concepts in everyday life, yet one of the least understood in science. There is still no widely accepted explanation for what intelligence fundamentally is, why it emerges, or whether it can be reduced to a single mechanism. Rather than beginning with assumptions, Syneera begins with observation.
+Why do we still struggle to explain intelligence? It is one of the most familiar concepts in everyday life, yet one of the least understood in science. There is still no widely accepted explanation for what intelligence fundamentally is, why it emerges, or whether it can be reduced to a single mechanism. Rather than beginning with assumptions, Auriora begins with observation.
 
-- [Open question](https://syneera.org/#open-question)
+- [Open question](https://auriora.org/#open-question)
 
 ## Principles
 
-How do we explore the unknown? Syneera begins with observation, not assumptions. By studying signals, adaptation, communication and collective behavior across living systems, it looks for patterns that may reveal deeper principles shared across forms of life. Curiosity, transparency and careful observation guide every step; explanations may change as understanding evolves, but observation remains the foundation.
+How do we explore the unknown? Auriora begins with observation, not assumptions. By studying signals, adaptation, communication and collective behavior across living systems, it looks for patterns that may reveal deeper principles shared across forms of life. Curiosity, transparency and careful observation guide every step; explanations may change as understanding evolves, but observation remains the foundation.
 
-- [Principles](https://syneera.org/#principles)
+- [Principles](https://auriora.org/#principles)
 
 ## Fields of exploration
 
-Where might intelligence reveal itself? Syneera explores a range of living systems where adaptation, communication and coordination emerge in different forms:
+Where might intelligence reveal itself? Auriora explores a range of living systems where adaptation, communication and coordination emerge in different forms:
 
 - Brains and Nervous Systems — how organisms sense, learn and adapt through electrical and chemical signaling.
 - Plants and Living Networks — intelligence in organisms that coordinate without centralized nervous systems.
 - Collective Systems — how simple interactions give rise to complex, adaptive behavior.
 - Ecosystems and Interdependence — intelligence as a process distributed across relationships rather than individuals.
 
-- [Fields](https://syneera.org/#fields)
+- [Fields](https://auriora.org/#fields)
 
 ## Direction
 
-Beyond familiar definitions. The nature of intelligence may be far broader than today's categories. By exploring patterns across brains, organisms, collectives and ecosystems, Syneera hopes to uncover principles connecting diverse forms of life. Its direction emphasizes new perspectives, open research, more-than-human intelligence, and shared discovery through collaboration and open exploration.
+Beyond familiar definitions. The nature of intelligence may be far broader than today's categories. By exploring patterns across brains, organisms, collectives and ecosystems, Auriora hopes to uncover principles connecting diverse forms of life. Its direction emphasizes new perspectives, open research, more-than-human intelligence, and shared discovery through collaboration and open exploration.
 
-- [Direction](https://syneera.org/#direction)
+- [Direction](https://auriora.org/#direction)
 
 ## Optional
 
-- [Sitemap](https://syneera.org/sitemap.xml)
-- [robots.txt](https://syneera.org/robots.txt)
+- [Sitemap](https://auriora.org/sitemap.xml)
+- [robots.txt](https://auriora.org/robots.txt)
