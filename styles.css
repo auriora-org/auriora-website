@@ -1,5 +1,5 @@
 /* ============================================================
-   Syneera — open research initiative
+   Auriora — open research initiative
    Alternating light / dark bands, six sections.
    Self-contained: no framework, no external fonts, no network.
    ============================================================ */
@@ -1012,7 +1012,7 @@ h3 {
   }
 
   /* With no nav only the wordmark sits in the bar; let the ::before blur reach a
-     little further below SYNEERA so it has room to feather out gently. Extend the
+     little further below AURIORA so it has room to feather out gently. Extend the
      layer past the header's lower edge and keep the original 72%-solid mask, so
      the solid zone clears the wordmark and the fade lands a touch lower. */
   .site-header::before {
