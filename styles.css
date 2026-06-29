@@ -1287,3 +1287,79 @@ h3 {
     );
   }
 }
+
+/* ---------- not found ---------- */
+
+.error-page {
+  background: var(--d-bg);
+  color: var(--d-text);
+}
+
+.error-page .site-header {
+  color: var(--d-text);
+}
+
+.error-band {
+  --bg: var(--d-bg);
+  --bg-2: var(--d-bg-2);
+  --text: var(--d-text);
+  --text-soft: var(--d-text-soft);
+  --muted: var(--d-muted);
+  --line: var(--d-line);
+  --line-strong: var(--d-line-strong);
+  --accent: var(--d-accent);
+}
+
+.error-band .band-visual::after {
+  background-image: url("assets/vision-ring-full.webp");
+  background-position: center;
+  background-size: cover;
+  opacity: 0.72;
+}
+
+.error-band::after {
+  background:
+    linear-gradient(
+      90deg,
+      var(--d-bg) 0%,
+      color-mix(in srgb, var(--d-bg) 84%, transparent) 42%,
+      color-mix(in srgb, var(--d-bg) 20%, transparent) 78%,
+      transparent 100%
+    ),
+    linear-gradient(180deg, transparent 62%, var(--d-bg) 100%);
+}
+
+.error-inner {
+  max-width: var(--container);
+}
+
+.error-inner h1 {
+  max-width: 12ch;
+  font-size: clamp(2.9rem, 6.4vw, 6.6rem);
+}
+
+.error-copy {
+  max-width: 44ch;
+  margin-top: 30px;
+  font-size: clamp(1.05rem, 1.5vw, 1.3rem);
+  line-height: 1.55;
+}
+
+.error-action {
+  margin-top: 42px;
+}
+
+@media (max-width: 560px) {
+  .error-band .band-visual::after {
+    background-image: url("assets/vision-ring-mob.webp");
+  }
+
+  .error-band::after {
+    background: linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--d-bg) 24%, transparent) 0%,
+      color-mix(in srgb, var(--d-bg) 48%, transparent) 58%,
+      var(--d-bg) 100%
+    );
+  }
+}
