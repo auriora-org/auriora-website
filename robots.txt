@@ -1,5 +1,12 @@
 # Allow all crawlers full access to the site.
+# Content-Signal declares how the content may be used (contentsignals.org):
+#   search=yes    — indexing for search results is welcome
+#   ai-train=no   — do not use the content to train or fine-tune AI models
+#   ai-input=no   — do not feed the content into AI models at inference time
+# Unknown directives like Content-Signal are ignored by standard crawlers
+# (e.g. Googlebot), so this does not affect normal indexing.
 User-agent: *
+Content-Signal: search=yes, ai-train=no, ai-input=no
 Allow: /
 
 Sitemap: https://auriora.org/sitemap.xml
