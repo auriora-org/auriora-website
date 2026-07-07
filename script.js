@@ -10,10 +10,6 @@ const wideViewport = window.matchMedia("(min-width: 921px)");
 const finePointer = window.matchMedia("(pointer: fine)");
 const pagingActive = () => wideViewport.matches && finePointer.matches;
 
-// Take over scroll restoration. With the browser's default "auto", a reload
-// restores the old scrollY before the .reveal sections have un-hidden, so the
-// 28px reveal offset throws the restored position off — each F5 drifts the
-// section by ~28px. Managing it ourselves keeps refreshes stable.
 // Manage scroll restoration ourselves. The browser's default "auto" restores
 // the old scrollY before the .reveal sections have un-hidden, so the 28px
 // reveal offset throws each F5 off by ~28px (it drifts). With "manual" we
@@ -46,10 +42,20 @@ if ("scrollRestoration" in history) {
   // layout already exists and the .reveal transforms don't change document
   // height — restoring now (rather than on "load") avoids a flash of the top
   // before the jump.
+  // getElementById instead of querySelector: an arbitrary incoming hash
+  // (e.g. "#_=_" from a Facebook redirect) is not a valid CSS selector and
+  // would make querySelector throw, killing the rest of this script
   const hash = window.location.hash;
+  let target = null;
   if (hash.length > 1) {
-    const target = document.querySelector(hash);
-    if (target) target.scrollIntoView({ behavior: "auto", block: "start" });
+    try {
+      target = document.getElementById(decodeURIComponent(hash.slice(1)));
+    } catch (e) {
+      target = null;
+    }
+  }
+  if (target) {
+    target.scrollIntoView({ behavior: "auto", block: "start" });
   } else {
     let saved = 0;
     try {
@@ -339,6 +345,7 @@ finePointer.addEventListener("change", onScroll);
   window.addEventListener(
     "wheel",
     (e) => {
+      if (e.ctrlKey) return; // pinch/ctrl+wheel is browser zoom, never paging
       if (Math.abs(e.deltaY) < 2) return;
       const consumed = handle(e.deltaY > 0 ? 1 : -1);
       if (consumed) e.preventDefault();
@@ -404,8 +411,6 @@ const VARIANTS = {
   network: { palette: ["#11161a", "#2f6f63", "#5a6b8c"], density: 0.05, link: 175, linkOpacity: 0.55, glow: 0.6, cluster: 1, calm: 0.6, max: 90 },
   // living web — dense bioluminescent connected web (dark band)
   web: { palette: ["#7fe6c4", "#e0be82", "#69d0a0"], density: 0.07, link: 120, glow: 0.85, max: 200 },
-  // beyond — fine root/branch filaments reaching upward (light band)
-  roots: { palette: ["#765b2f", "#3f7a6c", "#9a7b46"], density: 0.04, link: 110, glow: 0.35, max: 110 },
   // connections — swirling cosmic particle field (dark band)
   field: { palette: ["#7a8cff", "#ff9d6c", "#57c8d6", "#c9a4ff"], density: 0.075, link: 0, swirl: 1, glow: 0.9, max: 220 },
 };
