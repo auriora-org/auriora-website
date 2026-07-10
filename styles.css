@@ -732,9 +732,6 @@ h3 {
 
 .footer-contact {
   margin: 0;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 18px 44px;
 }
 
 .footer-contact .link-arrow {
@@ -1078,17 +1075,20 @@ h3 {
    sections) instead of centring it — used by Vision, Question and Open Question */
 #vision .band-inner,
 #question .band-inner,
-#open-question .band-inner {
+#open-question .band-inner,
+#building .band-inner {
   width: min(100% - clamp(40px, 8vw, 112px), var(--container));
 }
 #vision .band-inner-narrow,
 #question .band-inner-narrow,
-#open-question .band-inner-narrow {
+#open-question .band-inner-narrow,
+#building .band-inner-narrow {
   max-width: none;
 }
 #vision .band-inner-narrow > *,
 #question .band-inner-narrow > *,
-#open-question .band-inner-narrow > * {
+#open-question .band-inner-narrow > *,
+#building .band-inner-narrow > * {
   max-width: 680px;
 }
 
@@ -1119,6 +1119,20 @@ h3 {
 /* 7 — direction (light) · luminous connection field on a pale ground, full bleed;
    normal blend (light asset, so no screen needed) */
 #direction { --asset: url("assets/direction.webp"); --asset-pos: center; --asset-size: cover; }
+
+/* 8 — building (dark) · instrument signal field, full bleed, screen-blended */
+#building { --asset: url("assets/building.webp"); --asset-pos: center; --asset-size: cover; }
+/* the art is already dark and right-composed, so the default split scrim buries
+   it — keep only a gentle left wash behind the copy and let the field through */
+#building.band-split.band-dark::after {
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--d-bg) 68%, transparent) 0%,
+    color-mix(in srgb, var(--d-bg) 40%, transparent) 36%,
+    transparent 64%
+  );
+}
+
 /* dark hairlines like principles */
 #direction .pillar-grid { border-top-color: rgba(17, 22, 26, 0.42); }
 #direction .pillar + .pillar { border-left-color: rgba(17, 22, 26, 0.22); }
@@ -1264,6 +1278,7 @@ h3 {
   #principles { --asset: url("assets/principles-mob.webp"); --asset-pos: center; }
   #fields { --asset: url("assets/exploration-mob.webp"); --asset-pos: center; }
   #direction { --asset: url("assets/direction-mob.webp"); --asset-pos: center; }
+  #building { --asset: url("assets/building-mob.webp"); --asset-pos: center; --asset-size: cover; }
 }
 
 /* Mobile scrim for the LIGHT feature bands (Principles, Direction). Their
