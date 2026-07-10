@@ -29,7 +29,7 @@ Why do we still struggle to explain intelligence? It is one of the most familiar
 
 ## Principles
 
-How do we explore the unknown? Auriora begins with observation, not assumptions. By studying signals, adaptation, communication and collective behavior across living systems, it looks for patterns that may reveal deeper principles shared across forms of life. Curiosity, transparency and careful observation guide every step; explanations may change as understanding evolves, but observation remains the foundation.
+How do we explore the unknown? Observation comes before interpretation: Auriora measures, records and compares before explaining, and lets explanations change as understanding evolves. Transparency is part of the method — instruments, data and reasoning stay open so anyone can question, reproduce and improve the results. Care in engineering makes care in science possible; curiosity sets the direction, evidence decides what stays.
 
 - [Principles](https://auriora.org/#principles)
 
@@ -46,9 +46,16 @@ Where might intelligence reveal itself? Auriora explores a range of living syste
 
 ## Direction
 
-Beyond familiar definitions. The nature of intelligence may be far broader than today's categories. By exploring patterns across brains, organisms, collectives and ecosystems, Auriora hopes to uncover principles connecting diverse forms of life. Its direction emphasizes new perspectives, open research, more-than-human intelligence, and shared discovery through collaboration and open exploration.
+Beyond familiar definitions. The nature of intelligence may be far broader than today's categories. By exploring patterns across brains, organisms, collectives and ecosystems, Auriora hopes to uncover principles connecting diverse forms of life. Its direction emphasizes new perspectives, open research, intelligence beyond the human, and shared discovery through collaboration and open exploration.
 
 - [Direction](https://auriora.org/#direction)
+
+## What we are building
+
+Instruments for open exploration. Auriora develops open scientific hardware and software for observing and interacting with living systems. The first module families are in development: measurement of plant electrical signals, controlled light for plant photobiology, and parametric audio generation for stimulation and interaction. Everything is developed in the open under a common engineering standard — hardware, firmware, software and documentation — so results can be studied, questioned, reproduced and extended.
+
+- [Building](https://auriora.org/#building)
+- [GitHub organization](https://github.com/auriora-org)
 
 ## Optional
 
