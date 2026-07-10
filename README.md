@@ -1,77 +1,55 @@
-# Auriora - Website
+# AURIORA Website
 
-The website for **Auriora**, an open research initiative exploring intelligence,
-adaptation and communication across living systems through observation,
-measurement and open experimentation.
+The official website of AURIORA, an open engineering and research initiative exploring intelligence, adaptation and communication across living systems.
 
-> Auriora is not a theory to defend, but a question to explore:
-> *What is intelligence, and how does it emerge in different living systems?*
+Live: **[auriora.org](https://auriora.org/)**
 
-Live: **https://auriora.org/**
+## Purpose
 
-## Overview
+This repository contains the source of the AURIORA landing page. It presents the initiative — vision, question, principles and fields of exploration — and is the public entry point to the AURIORA ecosystem on [GitHub](https://github.com/auriora-org).
 
-A single-page static site built with plain HTML, CSS and vanilla JavaScript - no
-build step, no framework, no dependencies. It presents the initiative as a
-sequence of full-height "bands" (Vision, Question, Open Question, Principles,
-Fields, Direction) over an animated signal background, with scroll-driven reveals
-and desktop section paging.
+The site is a single-page static site built with plain HTML, CSS and vanilla JavaScript: no build step, no framework, no runtime dependencies.
 
-## Structure
+## Status
 
-```
+Released — the site is live at [auriora.org](https://auriora.org/) and deployed from this repository.
+
+## Repository structure
+
+```text
 .
-├── index.html        # Page markup - header, the section bands, footer, JSON-LD
+├── index.html        # Page markup — header, the section bands, footer, JSON-LD
+├── 404.html          # Custom 404 page with dedicated background art
 ├── styles.css        # All styling, including responsive + per-section backgrounds
 ├── script.js         # Scroll restoration, reveals, nav state, paging, canvas visuals
 ├── assets/           # Favicons, logo, and per-section WebP backgrounds (desktop + -mob)
-├── robots.txt        # Crawler access + sitemap pointer
+├── robots.txt        # Crawler access, content-usage preferences + sitemap pointer
 ├── sitemap.xml       # Single-URL sitemap
 └── llms.txt          # Structured site summary for LLM agents (llmstxt.org)
 ```
 
-### Sections (anchors on the home page)
-
-| Anchor             | Section              |
-| ------------------ | -------------------- |
-| `#home`            | Hero / intro         |
-| `#vision`          | Vision               |
-| `#question`        | The question         |
-| `#open-question`   | An open question     |
-| `#principles`      | Principles           |
-| `#fields`          | Fields of exploration|
-| `#direction`       | Direction            |
-
 ## How it works
 
-- **Animated visuals** - each band has a `<canvas data-variant="…">` (wave, ring,
-  network, field, web) rendered by `script.js`, layered over per-section WebP
-  backgrounds.
-- **Scroll reveals** - sections marked `.reveal` fade/slide in via an
-  `IntersectionObserver`, with a load-time safety net so nothing stays hidden.
-- **Manual scroll restoration** - the script manages `history.scrollRestoration`
-  itself to avoid the reveal offset drifting the restored position on each reload;
-  an incoming `#hash` deep link takes precedence.
-- **Header state** - a blur/scrim fades in only while a band boundary crosses the
-  header, and the active nav link is marked as you scroll.
-- **Desktop paging** - at ≥921px, wheel/key input snaps between full-height bands.
-- **Responsive assets** - every background ships a desktop and a `-mob` mobile
-  variant tuned for portrait composition.
+- **Section bands.** The page is a sequence of full-height bands (Vision, Question, Open Question, Principles, Fields, Direction), each an anchor on the home page.
+- **Animated visuals.** Each band has a `<canvas data-variant="…">` (wave, ring, network, field, web) rendered by `script.js`, layered over per-section WebP backgrounds.
+- **Scroll reveals.** Sections marked `.reveal` fade and slide in via an `IntersectionObserver`, with a load-time safety net so nothing stays hidden.
+- **Manual scroll restoration.** The script manages `history.scrollRestoration` itself so the reveal offset does not drift the restored position on reload; an incoming `#hash` deep link takes precedence.
+- **Header state.** A blur backdrop fades in only while a band boundary crosses the header, and the active navigation link is marked while scrolling.
+- **Desktop paging.** At widths of 921 px and above, wheel and key input snap between full-height bands.
+- **Responsive assets.** Every background ships a desktop and a `-mob` mobile variant tuned for portrait composition.
 
-## Develop locally
+## Local development
 
-No build is required - open `index.html` directly, or serve the folder so that
-relative asset paths and the canvas visuals behave as in production:
+No build is required. Serve the folder so relative asset paths and the canvas visuals behave as in production:
 
 ```bash
 python3 -m http.server 8000
 # then open http://localhost:8000
 ```
 
-## Deploy
+## Deployment
 
-Publish the repository contents as static files at the site root. Ensure these
-are reachable at the domain root:
+Publish the repository contents as static files at the site root. These files MUST be reachable at the domain root:
 
 - `/robots.txt`
 - `/sitemap.xml`
@@ -81,13 +59,23 @@ The site uses Cloudflare Web Analytics (beacon loaded in `index.html`).
 
 ## Conventions
 
-- Vanilla, dependency-free; keep it that way unless there's a strong reason.
-- Add new background images in both desktop and `-mob` variants (see `assets/`).
-- When content or sections change, update `sitemap.xml`'s `lastmod` and the
-  section list in `llms.txt`.
+- The site stays vanilla and dependency-free unless there is a strong reason to change that.
+- New background images are added in both desktop and `-mob` variants (see `assets/`).
+- When content or sections change, `sitemap.xml`'s `lastmod` and the section list in `llms.txt` are updated in the same change.
+- Documentation in this repository follows the [AURIORA Documentation Standard](https://github.com/auriora-org/auriora-documentation-standard) (`ADS`).
+
+## Versioning and changes
+
+Notable changes are recorded in the [CHANGELOG](./CHANGELOG.md); released versions are tagged in version control.
+
+## Contributing
+
+Changes go through pull requests. Broken links, content defects and suggestions are reported via the repository issue tracker.
+
+## License
+
+The website source is licensed under the [MIT License](./LICENSE).
 
 ## Contact
 
-contact@auriora.org
-
-© Auriora
+[contact@auriora.org](mailto:contact@auriora.org)
