@@ -5,6 +5,7 @@
 Auriora is not a theory to defend, but a question to explore: What is intelligence, and how does it emerge in different living systems? The work is open — over time it will be supported by openly developed tools, technologies, experiments and shared research.
 
 - Site: https://auriora.org/
+- GitHub: https://github.com/auriora-org
 - Single-page website (English). All sections below are anchors on the home page.
 - Contact: contact@auriora.org
 

@@ -732,6 +732,9 @@ h3 {
 
 .footer-contact {
   margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px 44px;
 }
 
 .footer-contact .link-arrow {
