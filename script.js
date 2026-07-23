@@ -216,7 +216,7 @@ finePointer.addEventListener("change", onScroll);
 /* ---------- full-page scroll (one band per scroll gesture) ----------
    A scroll gesture pages to the next/previous band so you always land exactly
    on a band top — no mid-scroll in-between state. Bands taller than the
-   viewport (e.g. Principles/Fields on short windows) scroll freely inside until
+   viewport (e.g. Principles/Focus on short windows) scroll freely inside until
    their far edge is reached, only then paging on. Honours reduced-motion. */
 {
   const EDGE = 24; // px tolerance: treat near-viewport bands as a single page,

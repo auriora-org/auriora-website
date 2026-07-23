@@ -2,7 +2,7 @@
 
 > Auriora is an open research initiative exploring intelligence, adaptation and communication across living systems through observation, measurement and open experimentation. It begins with observation rather than assumptions, studying signals, interactions and patterns across living systems to better understand the principles that may underlie intelligence itself.
 
-Auriora is not a theory to defend, but a question to explore: What is intelligence, and how does it emerge in different living systems? The work is open — over time it will be supported by openly developed tools, technologies, experiments and shared research.
+Auriora is not a theory to defend, but a question to explore: What is intelligence, and how does it emerge in different living systems? The work is open, and over time it will be supported by openly developed tools, technologies, experiments and shared research.
 
 - Site: https://auriora.org/
 - GitHub: https://github.com/auriora-org
@@ -29,30 +29,30 @@ Why do we still struggle to explain intelligence? It is one of the most familiar
 
 ## Principles
 
-How do we explore the unknown? Observation comes before interpretation: Auriora measures, records and compares before explaining, and lets explanations change as understanding evolves. Transparency is part of the method — instruments, data and reasoning stay open so anyone can question, reproduce and improve the results. Care in engineering makes care in science possible; curiosity sets the direction, evidence decides what stays.
+How do we explore the unknown? Observation comes before interpretation: Auriora measures, records and compares before explaining, and lets explanations change as understanding evolves. Transparency is part of the method, so instruments, data and reasoning stay open and anyone can question, reproduce and improve the results. Care in engineering makes care in science possible; curiosity sets the direction, evidence decides what stays.
 
 - [Principles](https://auriora.org/#principles)
 
-## Fields of exploration
+## Focus
 
-Where might intelligence reveal itself? Auriora explores a range of living systems where adaptation, communication and coordination emerge in different forms:
+Starting where the signals are measurable. Intelligence, in the form of sensing, adaptation, memory and coordination, may be far more widespread across living systems than our categories assume. But a question this open can only be studied where the signals are real and measurable. Auriora begins where sensing and signaling are most directly observable: in plants and the living, fungal and mycorrhizal networks they form. It starts not from a definition, but from what can be measured, focusing on the measurable signal channels of these systems:
 
-- Brains and Nervous Systems — how organisms sense, learn and adapt through electrical and chemical signaling.
-- Plants and Living Networks — intelligence in organisms that coordinate without centralized nervous systems.
-- Collective Systems — how simple interactions give rise to complex, adaptive behavior.
-- Ecosystems and Interdependence — intelligence as a process distributed across relationships rather than individuals.
+- Electrical signaling: the fast, long-distance signals (action, variation and systemic potentials) that travel through living tissue.
+- Chemical signaling: volatile and chemical cues by which plants and their networks sense, warn and influence one another.
+- Light and photobiology: how living systems read the spectrum, direction and timing of light, and reshape themselves in response.
+- Sound and vibration: mechanical and acoustic signals as stimulus, and potentially as information the organism acts on.
 
-- [Fields](https://auriora.org/#fields)
+- [Focus](https://auriora.org/#focus)
 
 ## Direction
 
-Beyond familiar definitions. The nature of intelligence may be far broader than today's categories. By exploring patterns across brains, organisms, collectives and ecosystems, Auriora hopes to uncover principles connecting diverse forms of life. Its direction emphasizes new perspectives, open research, intelligence beyond the human, and shared discovery through collaboration and open exploration.
+Beyond familiar definitions. The nature of intelligence may be far broader than today's categories. By comparing how sensing, adaptation and coordination arise across very different living systems, Auriora hopes to uncover principles connecting diverse forms of life. Its direction emphasizes new perspectives, open research, intelligence beyond the human, and shared discovery through collaboration and open exploration.
 
 - [Direction](https://auriora.org/#direction)
 
 ## What we are building
 
-Instruments for open exploration. Auriora develops open scientific hardware and software for observing and interacting with living systems. The first module families are in development: measurement of plant electrical signals, controlled light for plant photobiology, and parametric audio generation for stimulation and interaction. Everything is developed in the open under a common engineering standard — hardware, firmware, software and documentation — so results can be studied, questioned, reproduced and extended.
+Instruments for open exploration. Questions this open need instruments, and the field's hardest problem is not imagination but reproducibility. Auriora develops open, modular hardware and software for measuring and stimulating living systems on a shared, synchronized time base. The first modules are in development: measurement of plant electrical signals, controlled light for photobiology, and parametric sound for stimulation. They are designed to run together, so light- or vibration-evoked electrical responses can be recorded as one experiment rather than in isolation. Everything is built in the open under a single engineering standard, covering hardware, firmware, software and documentation, so an experiment can be inspected, repeated and extended by anyone, not just re-described. If you study plant or network behavior, it is built to be used, questioned and contributed to.
 
 - [Building](https://auriora.org/#building)
 - [GitHub organization](https://github.com/auriora-org)
