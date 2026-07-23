@@ -290,7 +290,7 @@ h3 {
 }
 
 /* breathing room for the flowing copy in the split sections (Vision, Question,
-   Fields): a gap under the title, between stacked paragraphs, and a larger gap
+   Focus): a gap under the title, between stacked paragraphs, and a larger gap
    before the closing link */
 .band-inner-narrow h2 + p,
 .band-inner-narrow h2 + ul {
@@ -595,7 +595,7 @@ h3 {
   gap: clamp(40px, 4vh, 52px);
 }
 
-/* Feature bands with a pillar grid (Fields, Direction) fill ≥1 screen but their
+/* Feature bands with a pillar grid (Focus, Direction) fill ≥1 screen but their
    copy+grid block is usually a little shorter, leaving slack. Instead of
    centring the whole block (which floats the grid in mid-band), split the band:
    the heading copy is centred in the space above and the 4-up grid is pinned to
@@ -837,7 +837,7 @@ h3 {
     padding-block: clamp(72px, 9vh, 104px);
   }
 
-  /* Feature bands WITH a pillar grid (Fields, Direction) use the base split rule
+  /* Feature bands WITH a pillar grid (Focus, Direction) use the base split rule
      (copy centred above, grid pinned to the foot via stretch + 1fr/auto rows) at
      every width — including here. On a single-column phone the stacked cards make
      the band much taller than the viewport, so the 1fr row collapses and it reads
@@ -1113,8 +1113,8 @@ h3 {
     );
 }
 
-/* 6 — fields (dark) · golden exploration field, full bleed, screen-blended */
-#fields { --asset: url("assets/exploration.webp"); --asset-pos: center; --asset-size: cover; }
+/* 6 — focus (dark) · golden exploration field, full bleed, screen-blended */
+#focus { --asset: url("assets/exploration.webp"); --asset-pos: center; --asset-size: cover; }
 
 /* 7 — direction (light) · luminous connection field on a pale ground, full bleed;
    normal blend (light asset, so no screen needed) */
@@ -1276,7 +1276,7 @@ h3 {
   #question { --asset: url("assets/question-network-mob.webp"); --asset-pos: center; }
   #open-question { --asset: url("assets/open-question-mob.webp"); --asset-pos: center; --asset-size: cover; }
   #principles { --asset: url("assets/principles-mob.webp"); --asset-pos: center; }
-  #fields { --asset: url("assets/exploration-mob.webp"); --asset-pos: center; }
+  #focus { --asset: url("assets/exploration-mob.webp"); --asset-pos: center; }
   #direction { --asset: url("assets/direction-mob.webp"); --asset-pos: center; }
   #building { --asset: url("assets/building-mob.webp"); --asset-pos: center; --asset-size: cover; }
 }
@@ -1287,7 +1287,7 @@ h3 {
    half, exactly where the heading and body copy sit, so dark text was washing
    out. Swap to a top-weighted vertical wash: strongest behind the copy up top,
    easing downward so the luminous field still reads behind the lower cards.
-   (Fields is a dark band — light text over the dark asset already reads, so it
+   (Focus is a dark band — light text over the dark asset already reads, so it
    keeps its scrim.)
 
    ID selectors here match the specificity of the per-section #principles /

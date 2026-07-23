@@ -6,7 +6,7 @@ Live: **[auriora.org](https://auriora.org/)**
 
 ## Purpose
 
-This repository contains the source of the AURIORA landing page. It presents the initiative — vision, question, principles and fields of exploration — and is the public entry point to the AURIORA ecosystem on [GitHub](https://github.com/auriora-org).
+This repository contains the source of the AURIORA landing page. It presents the initiative — vision, question, principles and focus — and is the public entry point to the AURIORA ecosystem on [GitHub](https://github.com/auriora-org).
 
 The site is a single-page static site built with plain HTML, CSS and vanilla JavaScript: no build step, no framework, no runtime dependencies.
 
@@ -30,7 +30,7 @@ Released — the site is live at [auriora.org](https://auriora.org/) and deploye
 
 ## How it works
 
-- **Section bands.** The page is a sequence of full-height bands (Vision, Question, Open Question, Principles, Fields, Direction, Building), each an anchor on the home page.
+- **Section bands.** The page is a sequence of full-height bands (Vision, Question, Open Question, Principles, Focus, Direction, Building), each an anchor on the home page.
 - **Animated visuals.** Each band has a `<canvas data-variant="…">` (wave, ring, network, field, web) rendered by `script.js`, layered over per-section WebP backgrounds.
 - **Scroll reveals.** Sections marked `.reveal` fade and slide in via an `IntersectionObserver`, with a load-time safety net so nothing stays hidden.
 - **Manual scroll restoration.** The script manages `history.scrollRestoration` itself so the reveal offset does not drift the restored position on reload; an incoming `#hash` deep link takes precedence.
