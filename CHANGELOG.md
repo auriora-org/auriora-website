@@ -13,6 +13,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - Focus section states that Auriora does not start from a presupposed plant intelligence to be proven, but from what the systems measurably do
 - Building section spells out what reproducibility means (open designs, versioned interfaces, documented calibration, recorded timing), notes that the standards and guides are already public while instrument repositories follow at releasable state, and ends with a direct contact call to action
 - Inline links inside body copy are underlined (`.band p a`)
+- Building band layout: the title stays on one line on wide screens and the vertical rhythm is slightly tighter, so the closing link stays clear of the fold on common desktop heights
 - Fields section reframed as "Focus": the page now starts from plants and living networks and their measurable signal channels (electrical, chemical, light, sound and vibration) instead of the four broad areas of exploration; the `#fields` anchor became `#focus`
 - Direction wording generalized; em-dashes removed from body copy
 - Favicon redrawn with a full-bleed ring and a theme-aware SVG icon for better contrast

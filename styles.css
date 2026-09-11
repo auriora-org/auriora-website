@@ -472,6 +472,29 @@ h3 {
   color: var(--text-soft);
 }
 
+/* the Building band carries the longest copy of the split sections: keep its
+   title on one line on wide screens and tighten the vertical rhythm slightly so
+   the closing link stays clear of the fold on common desktop heights */
+#building h2 {
+  font-size: clamp(2rem, 2.5vw, 2.9rem);
+}
+
+#building .band-inner-narrow h2 + p {
+  margin-top: 26px;
+}
+
+#building .band-inner-narrow p + p {
+  margin-top: 14px;
+}
+
+#building .band-inner-narrow > .pull-question {
+  margin-top: 28px;
+}
+
+#building .band-inner-narrow > .link-arrow {
+  margin-top: 32px;
+}
+
 /* inline links inside body copy (e.g. the contact address) */
 .band p a {
   text-decoration: underline;
