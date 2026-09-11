@@ -40,7 +40,7 @@ Starting where the signals are measurable. Intelligence, in the form of sensing,
 - Electrical signaling: the fast, long-distance signals (action, variation and systemic potentials) that travel through living tissue.
 - Chemical signaling: volatile and chemical cues by which plants and their networks sense, warn and influence one another.
 - Light and photobiology: how living systems read the spectrum, direction and timing of light, and reshape themselves in response.
-- Sound and vibration: mechanical and acoustic signals as stimulus, and potentially as information the organism acts on.
+- Sound and vibration: mechanical and acoustic signals as stimuli, and potentially as information the organism acts on.
 
 - [Focus](https://auriora.org/#focus)
 
@@ -52,7 +52,7 @@ Beyond familiar definitions. The nature of intelligence may be far broader than 
 
 ## What we are building
 
-Instruments for open exploration. Questions this open need instruments, and the field's hardest problem is not imagination but reproducibility. Auriora develops open, modular hardware and software for measuring and stimulating living systems with coordinated timing across modules. The first modules are in development: measurement of plant electrical signals, controlled light for photobiology, and programmable sound for stimulation. They are designed to run together, so light- or sound-evoked electrical responses can be recorded as one experiment rather than in isolation. Everything is built in the open under a single engineering standard, covering hardware, firmware, software and documentation, so an experiment can be inspected, repeated and extended by anyone, not just re-described. If you study plant or network behavior, it is built to be used, questioned and contributed to.
+Instruments for open exploration. Questions this open need instruments, and the field's hardest problem is not imagination but reproducibility. Auriora develops open, modular hardware and software for measuring and stimulating living systems with coordinated timing across modules. The first modules in development measure plant electrical signals, control light for photobiology, and generate programmable sound for stimulation. They are designed to run together, so light- or sound-evoked electrical responses can be recorded as one experiment rather than in isolation. Everything is built in the open under a single engineering standard, covering hardware, firmware, software and documentation, so an experiment can be inspected, repeated and extended by anyone, not merely described. If you study plant or network behavior, these instruments are built for you: to be used, questioned and contributed to.
 
 - [Building](https://auriora.org/#building)
 - [GitHub organization](https://github.com/auriora-org)
