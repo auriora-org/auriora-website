@@ -472,6 +472,12 @@ h3 {
   color: var(--text-soft);
 }
 
+/* inline links inside body copy (e.g. the contact address) */
+.band p a {
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+
 /* the central question, lifted out of the body copy so it lands on the reader */
 .pull-question {
   font-family: var(--font-display);

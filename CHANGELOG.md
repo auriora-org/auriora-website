@@ -10,6 +10,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 - "What we are building" wording aligned with the current architecture: the instruments are described as running with coordinated timing across modules rather than on a shared, synchronized time base; the audio module family is described as programmable sound for stimulation instead of parametric sound, and evoked responses as light- or sound-evoked
 - Building section copy proofread: the module list is now a verb phrase instead of a colon list, the closing invitation names the instruments explicitly instead of a dangling "it", and "re-described" became "merely described"; Focus section "as stimulus" corrected to "as stimuli"
+- Focus section states that Auriora does not start from a presupposed plant intelligence to be proven, but from what the systems measurably do
+- Building section spells out what reproducibility means (open designs, versioned interfaces, documented calibration, recorded timing), notes that the standards and guides are already public while instrument repositories follow at releasable state, and ends with a direct contact call to action
+- Inline links inside body copy are underlined (`.band p a`)
 - Fields section reframed as "Focus": the page now starts from plants and living networks and their measurable signal channels (electrical, chemical, light, sound and vibration) instead of the four broad areas of exploration; the `#fields` anchor became `#focus`
 - Direction wording generalized; em-dashes removed from body copy
 - Favicon redrawn with a full-bleed ring and a theme-aware SVG icon for better contrast
