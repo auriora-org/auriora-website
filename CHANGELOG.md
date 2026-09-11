@@ -4,6 +4,15 @@ All notable changes to the AURIORA website are documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Released versions are tagged in version control.
 
+## Unreleased
+
+### Changed
+
+- "What we are building" wording aligned with the current architecture: the instruments are described as running with coordinated timing across modules rather than on a shared, synchronized time base; the audio module family is described as programmable sound for stimulation instead of parametric sound, and evoked responses as light- or sound-evoked
+- Fields section reframed as "Focus": the page now starts from plants and living networks and their measurable signal channels (electrical, chemical, light, sound and vibration) instead of the four broad areas of exploration; the `#fields` anchor became `#focus`
+- Direction wording generalized; em-dashes removed from body copy
+- Favicon redrawn with a full-bleed ring and a theme-aware SVG icon for better contrast
+
 ## 1.1.0 - 2026-07-10
 
 ### Added
