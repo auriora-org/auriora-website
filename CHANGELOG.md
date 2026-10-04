@@ -8,6 +8,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Changed
 
+- Framing widened from "living systems" to "very different systems" in the hero headline, lede, meta/Open Graph/Twitter/JSON-LD descriptions, footer and README, so the headline question no longer presupposes what counts as alive or intelligent; the lede and descriptions now state the current focus explicitly (instruments for sensing, adaptation and communication, beginning with plants and the networks they form). "Living" is kept where the copy describes the actual biological focus (Focus pillars, Building section)
+- `llms.txt` re-synchronized with the page copy; it had drifted to older Vision, Question, Open question, Principles and Direction wording
 - "What we are building" wording aligned with the current architecture: the instruments are described as running with coordinated timing across modules rather than on a shared, synchronized time base; the audio module family is described as programmable sound for stimulation instead of parametric sound, and evoked responses as light- or sound-evoked
 - Building section copy proofread: the module list is now a verb phrase instead of a colon list, the closing invitation names the instruments explicitly instead of a dangling "it" and reads "being built for you to use, question and improve", and "re-described" became "merely described"; Focus section "as stimulus" corrected to "as stimuli"
 - Focus section states that Auriora does not start from a presupposed plant intelligence to be proven, but from what the systems measurably do

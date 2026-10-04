@@ -1,8 +1,8 @@
 # Auriora
 
-> Auriora is an open research initiative exploring intelligence, adaptation and communication across living systems through observation, measurement and open experimentation. It begins with observation rather than assumptions, studying signals, interactions and patterns across living systems to better understand the principles that may underlie intelligence itself.
+> Auriora is an open research initiative exploring how intelligence emerges across very different systems through observation, measurement and open experimentation. It builds open instruments to study sensing, adaptation and communication, beginning with plants and the networks they form. It does not start from a definition of intelligence; it starts from what can be measured.
 
-Auriora is not a theory to defend, but a question to explore: What is intelligence, and how does it emerge in different living systems? The work is open, and over time it will be supported by openly developed tools, technologies, experiments and shared research.
+Auriora is not a theory to defend, but a question to explore: What is intelligence, and how does it emerge in different systems? The work is open, and it is supported by openly developed instruments, standards, experiments and shared research.
 
 - Site: https://auriora.org/
 - GitHub: https://github.com/auriora-org
@@ -11,33 +11,33 @@ Auriora is not a theory to defend, but a question to explore: What is intelligen
 
 ## Vision
 
-Understanding intelligence beyond familiar boundaries. Intelligence is often associated with brains, cognition and human experience, yet throughout nature we find systems that sense, adapt, communicate and coordinate in ways that challenge these boundaries. Auriora explores how intelligence emerges in different living systems.
+Understanding intelligence beyond familiar boundaries. Intelligence usually means brains. Yet a root, a fungal network or a colony of ants also senses its surroundings and acts on what it finds, with no brain anywhere. Auriora takes this seriously: it builds instruments that measure how plants and their networks signal, and publishes everything it makes. Whether the word intelligence reaches that far is a result Auriora is after, not an assumption it starts from.
 
 - [Vision](https://auriora.org/#vision)
 
 ## The question
 
-What is intelligence, and how does it emerge in different systems? We recognize intelligence the moment we encounter it, yet it is hard to say what makes a system intelligent. A person learns from experience, a plant adapts to its environment, a colony coordinates without a central leader, an ecosystem reorganizes over time. Despite their differences, each senses its surroundings, responds, adapts and organizes itself in relation to the world.
+What is intelligence, and how does it emerge in different systems? Most of us think we know intelligence when we see it, yet it is hard to say what actually makes a system intelligent. A dog that has been to the vet once refuses the car the next time; a bean seedling turns toward the window within hours, and its root grows around a stone it has never touched; an ant colony has no one in charge, yet it reroutes when the path to food is blocked. Each takes in something from its surroundings and changes what it does because of it. Whether that deserves the same word in every case is exactly what is not known. What, if anything, do these systems have in common, and is it the same thing we mean when we say intelligence?
 
 - [The question](https://auriora.org/#question)
 
 ## An open question
 
-Why do we still struggle to explain intelligence? It is one of the most familiar concepts in everyday life, yet one of the least understood in science. There is still no widely accepted explanation for what intelligence fundamentally is, why it emerges, or whether it can be reduced to a single mechanism. Rather than beginning with assumptions, Auriora begins with observation.
+Why do we still struggle to explain intelligence? Partly because only one example has ever been studied closely: ourselves. Definitions built on human cognition travel badly to a root tip or a mycelium. Partly because the field has been long on ideas and short on measurements: claims about plant signaling are easy to make and hard to repeat, because the raw recordings and the exact setup behind them are often not shared. There is still no agreed answer to what intelligence is, whether it comes down to one mechanism, or why it shows up where it does. Auriora does not expect that answer to come from arguing about definitions, but from better observations, made in the open.
 
 - [Open question](https://auriora.org/#open-question)
 
 ## Principles
 
-How do we explore the unknown? Observation comes before interpretation: Auriora measures, records and compares before explaining, and lets explanations change as understanding evolves. Transparency is part of the method, so instruments, data and reasoning stay open and anyone can question, reproduce and improve the results. Care in engineering makes care in science possible; curiosity sets the direction, evidence decides what stays.
+How do we explore the unknown? Measure before interpreting: the recording comes first, and the explanation is allowed to change when the next recording disagrees with it. Everything stays open, the instrument designs, the raw data and the reasoning that connects them; if a result cannot be reproduced from what is published, that is treated as a bug. Careful engineering is not a separate concern from careful science: a signal is only as trustworthy as the tool that recorded it.
 
 - [Principles](https://auriora.org/#principles)
 
 ## Focus
 
-Starting where the signals are measurable. Intelligence, in the form of sensing, adaptation, memory and coordination, may be far more widespread across living systems than our categories assume. But a question this open can only be studied where the signals are real and measurable. Auriora begins where sensing and signaling are most directly observable: in plants and the living, fungal and mycorrhizal networks they form. It does not begin by assuming that plants are intelligent and then set out to prove it; it begins with what these systems measurably do and lets the evidence decide what the word means here. It starts not from a definition, but from what can be measured, focusing on the measurable signal channels of these systems:
+Starting where the signals are measurable. If intelligence is more widespread than our categories assume, the place to find out is where the signals can actually be recorded. Auriora begins where sensing and signaling are most directly observable: in plants and the fungal and mycorrhizal networks they form. It does not begin by assuming that plants are intelligent and then set out to prove it; it begins with what these systems measurably do and lets the evidence decide what the word means here. The current signal channels:
 
-- Electrical signaling: the fast, long-distance signals (action, variation and systemic potentials) that travel through living tissue.
+- Electrical signaling: action, variation and systemic potentials, the fast, long-distance signals that travel through living tissue.
 - Chemical signaling: volatile and chemical cues by which plants and their networks sense, warn and influence one another.
 - Light and photobiology: how living systems read the spectrum, direction and timing of light, and reshape themselves in response.
 - Sound and vibration: mechanical and acoustic signals as stimuli, and potentially as information the organism acts on.
@@ -46,13 +46,13 @@ Starting where the signals are measurable. Intelligence, in the form of sensing,
 
 ## Direction
 
-Beyond familiar definitions. The nature of intelligence may be far broader than today's categories. By comparing how sensing, adaptation and coordination arise across very different living systems, Auriora hopes to uncover principles connecting diverse forms of life. Its direction emphasizes new perspectives, open research, intelligence beyond the human, and shared discovery through collaboration and open exploration.
+Beyond familiar definitions. Plants are the starting point, not the boundary. Once the same signals can be recorded reliably in one kind of organism, the interesting question is whether they turn up elsewhere: in fungal networks, in colonies, in lineages that parted ways with plants more than a billion years ago. If they do, that says something about intelligence in general; if they don't, that says something too. Auriora is not a theory of intelligence. It is a place to work on the question in public, with instruments and data anyone can check. Its direction: new perspectives (human cognition is one case among many, not the yardstick), open research (designs, data and arguments are published, so being wrong is easy to show), beyond the human (plants and fungal networks first, because that is where the signals can be measured today), and shared discovery (nobody owns the question; work from any field is welcome, and credited).
 
 - [Direction](https://auriora.org/#direction)
 
 ## What we are building
 
-Instruments for open exploration. Questions this open need instruments, and the field's hardest problem is not imagination but reproducibility. Auriora develops open, modular hardware and software for measuring and stimulating living systems with coordinated timing across modules. The first modules in development measure plant electrical signals, control light for photobiology, and generate programmable sound for stimulation. They are designed to run together, so light- or sound-evoked electrical responses can be recorded as one experiment rather than in isolation. Everything is built in the open under a single engineering standard, covering hardware, firmware, software and documentation. Reproducibility is concrete here: open designs, versioned interfaces, documented calibration, and timing recorded with the data, so an experiment can be inspected, repeated and extended by anyone, not merely described. The standards and guides are already public; the instrument repositories follow as each module reaches a releasable state. If you study plant or network behavior, these instruments are being built for you to use, question and improve. To take part, write to contact@auriora.org.
+Instruments for open exploration. A question this open needs instruments, and the field's hardest problem is reproducibility, not imagination. Auriora develops open, modular hardware and software for measuring and stimulating living systems with coordinated timing across modules. The first modules in development measure plant electrical signals, control light for photobiology, and generate programmable sound for stimulation. They are designed to run together, so light- or sound-evoked electrical responses can be recorded as one experiment rather than in isolation. Everything is built in the open under a single engineering standard, covering hardware, firmware, software and documentation alike. Reproducibility is concrete here: open designs, versioned interfaces, documented calibration, and timing recorded with the data, so an experiment can be repeated by someone else, not merely described. The standards and guides are already public; the instrument repositories follow as each module reaches a releasable state. If you study plant or network behavior, these instruments are being built for you to use, question and improve. To take part, write to contact@auriora.org.
 
 - [Building](https://auriora.org/#building)
 - [GitHub organization](https://github.com/auriora-org)
