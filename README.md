@@ -1,6 +1,6 @@
 # AURIORA Website
 
-The official website of AURIORA, an open engineering and research initiative exploring how intelligence emerges across very different systems, beginning with plants and the networks they form.
+The official website of AURIORA, an open engineering and research initiative exploring how intelligence emerges across very different systems, beginning with plants and the networks they live in.
 
 Live: **[auriora.org](https://auriora.org/)**
 

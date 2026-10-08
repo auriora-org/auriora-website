@@ -544,6 +544,33 @@ h3 {
 
 .home-inner h1 {
   margin-top: 4px;
+  /* The headline wraps to five lines at every width, so its height is what
+     decides whether the hero fits the screen. The base h1 size is purely
+     width-driven (6.4vw), which on a short desktop viewport (1366×768,
+     1280×720, or a zoomed 1080p) made the hero overrun the fold and cost a
+     second scroll gesture to reach Vision. Add a height term so the title
+     shrinks with the viewport height; on normal-height desktops the vw/rem
+     branches still win and nothing changes. */
+  font-size: clamp(2.9rem, min(6.4vw, 9.6vh), 6.6rem);
+}
+
+/* On the wide layout the hero's vertical padding only matters when the copy
+   nearly fills the viewport (the content is centred otherwise). Trim it
+   there so the title, lede and scroll cue fit above the fold on 768px-tall
+   screens; mobile overrides its own padding further down. */
+@media (min-width: 921px) {
+  .band-home {
+    padding-block: clamp(80px, 10vh, 168px);
+  }
+}
+
+/* Very short wide viewports (a 768px-tall laptop at 125% browser zoom, or a
+   small window): shrink the height term a little further so the hero stays
+   within the paging tolerance and one gesture still reaches Vision. */
+@media (min-width: 921px) and (max-height: 660px) {
+  .home-inner h1 {
+    font-size: clamp(2.9rem, min(6.4vw, 8.6vh), 6.6rem);
+  }
 }
 
 .scroll-cue {
@@ -1271,6 +1298,23 @@ h3 {
 @media (min-width: 921px) and (max-height: 940px) {
   .band-feature:has(.pillar-grid) {
     padding-block: clamp(40px, 5vh, 64px);
+  }
+  /* Building carries the longest copy of the split bands and overran the fold
+     on 768-900px-tall desktops, costing a second paging gesture. Trim its
+     padding and the gaps around the closing question and link so the whole
+     block, GitHub link included, fits one screen; the copy itself is kept
+     to four short paragraphs for the same reason. */
+  #building {
+    padding-block: clamp(72px, 9vh, 100px);
+  }
+  #building .band-inner-narrow p {
+    line-height: 1.55;
+  }
+  #building .band-inner-narrow > .pull-question {
+    margin-top: 22px;
+  }
+  #building .band-inner-narrow > .link-arrow {
+    margin-top: 26px;
   }
   .band-feature .band-inner {
     gap: clamp(24px, 3vh, 40px);
